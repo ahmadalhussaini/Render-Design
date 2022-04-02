@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\source\\repos\\RenderDesignWeb\\RenderDesignWeb\\RenderDesignWeb.csproj": {}
+    "D:\\Ameera\\Ahmed\\RenderDesignWeb\\RenderDesignWeb\\RenderDesignWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\source\\repos\\RenderDesignWeb\\RenderDesignWeb\\RenderDesignWeb.csproj": {
+    "D:\\Ameera\\Ahmed\\RenderDesignWeb\\RenderDesignWeb\\RenderDesignWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\source\\repos\\RenderDesignWeb\\RenderDesignWeb\\RenderDesignWeb.csproj",
+        "projectUniqueName": "D:\\Ameera\\Ahmed\\RenderDesignWeb\\RenderDesignWeb\\RenderDesignWeb.csproj",
         "projectName": "RenderDesignWeb",
-        "projectPath": "C:\\Users\\user\\source\\repos\\RenderDesignWeb\\RenderDesignWeb\\RenderDesignWeb.csproj",
+        "projectPath": "D:\\Ameera\\Ahmed\\RenderDesignWeb\\RenderDesignWeb\\RenderDesignWeb.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\source\\repos\\RenderDesignWeb\\RenderDesignWeb\\obj\\",
+        "outputPath": "D:\\Ameera\\Ahmed\\RenderDesignWeb\\RenderDesignWeb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
