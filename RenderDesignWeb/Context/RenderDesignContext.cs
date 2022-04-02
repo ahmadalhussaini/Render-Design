@@ -11,7 +11,13 @@ namespace RenderDesignWeb.Context
         }
 
         public DbSet<Admin> Admins { get; set; }
-      
+        public DbSet<ContactMobail> ContactsMobile { get; set; }
+        public DbSet<ContactRequests> ContactsRequestss { get; set; }
+        public DbSet<Designer> Designers { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Project> Projects { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
