@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\source\\repos\\RenderDesignWeb\\RenderDesignWeb\\RenderDesignWeb.csproj": {}
+    "C:\\Users\\H4C\\Desktop\\render-design\\Render-Design\\RenderDesignWeb\\RenderDesignWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\source\\repos\\RenderDesignWeb\\RenderDesignWeb\\RenderDesignWeb.csproj": {
+    "C:\\Users\\H4C\\Desktop\\render-design\\Render-Design\\RenderDesignWeb\\RenderDesignWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\source\\repos\\RenderDesignWeb\\RenderDesignWeb\\RenderDesignWeb.csproj",
+        "projectUniqueName": "C:\\Users\\H4C\\Desktop\\render-design\\Render-Design\\RenderDesignWeb\\RenderDesignWeb.csproj",
         "projectName": "RenderDesignWeb",
-        "projectPath": "C:\\Users\\user\\source\\repos\\RenderDesignWeb\\RenderDesignWeb\\RenderDesignWeb.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\source\\repos\\RenderDesignWeb\\RenderDesignWeb\\obj\\",
+        "projectPath": "C:\\Users\\H4C\\Desktop\\render-design\\Render-Design\\RenderDesignWeb\\RenderDesignWeb.csproj",
+        "packagesPath": "C:\\Users\\H4C\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\H4C\\Desktop\\render-design\\Render-Design\\RenderDesignWeb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\H4C\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -49,12 +49,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.22, 3.1.22]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -63,7 +57,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
