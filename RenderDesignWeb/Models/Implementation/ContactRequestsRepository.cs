@@ -1,28 +1,43 @@
-﻿using RenderDesignWeb.Models.Interface;
+﻿using Microsoft.EntityFrameworkCore;
+using RenderDesignWeb.Context;
+using RenderDesignWeb.Models.Interface;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RenderDesignWeb.Models.Implementation
 {
+   
     public class ContactRequestsRepository : IContactRequestsRepository
     {
-        public ContactRequests Add(ContactRequests contactrequests)
+        readonly RenderDesignContext db;
+        public ContactRequestsRepository(RenderDesignContext db)
         {
-            throw new System.NotImplementedException();
+            db.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            this.db = db;
+        }
+        public ContactRequests Add(ContactRequests entity)
+        {
+            var contactrequests = db.ContactsRequestss.Add(entity);
+            db.SaveChanges();
+            return contactrequests.Entity;
         }
 
-        public void Delete(ContactRequests contactRequests)
+        public void Delete(ContactRequests entity)
         {
-            throw new System.NotImplementedException();
+            db.ContactsRequestss.Remove(entity);
+            db.SaveChanges();
         }
 
         public List<ContactRequests> GetContactRequests()
         {
-            throw new System.NotImplementedException();
+            var contactrequests = db.ContactsRequestss.ToList();
+            return contactrequests;
         }
 
         public ContactRequests GetContactRequests(int Id)
         {
-            throw new System.NotImplementedException();
+            var contactrequests = db.ContactsRequestss.SingleOrDefault(b => b.Id == Id);
+            return contactrequests;
         }
     }
 }

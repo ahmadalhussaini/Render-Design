@@ -1,38 +1,54 @@
-﻿using RenderDesignWeb.Models.Interface;
+﻿using Microsoft.EntityFrameworkCore;
+using RenderDesignWeb.Context;
+using RenderDesignWeb.Models.Interface;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RenderDesignWeb.Models.Implementation
 {
     public class ImageRepository : IImageRepository
     {
-        public Image Add(Image image)
+        readonly RenderDesignContext db;
+        public ImageRepository(RenderDesignContext db)
         {
-            throw new System.NotImplementedException();
+            db.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            this.db = db;
+        }
+        public Image Add(Image entity)
+        {
+            var image = db.Images.Add(entity);
+            db.SaveChanges();
+            return image.Entity;
         }
 
-        public void Delete(Image image)
+        public void Delete(Image entity)
         {
-            throw new System.NotImplementedException();
+            db.Images.Remove(entity);
+            db.SaveChanges();
         }
 
         public List<Image> GetImages()
         {
-            throw new System.NotImplementedException();
+            var image = db.Images.ToList();
+            return image;
         }
 
         public List<Image> GetImages(int ProjectId)
         {
-            throw new System.NotImplementedException();
+            var image = db.Images.Where(x => x.ProjectId == ProjectId).ToList();
+            return image;
         }
 
         public Image GetImg(int Id)
         {
-            throw new System.NotImplementedException();
+            var image = db.Images.Where(x => x.Id == Id);
+            return image;
         }
 
-        public void Update(Image image)
+        public void Update(Image entity)
         {
-            throw new System.NotImplementedException();
+            db.Images.Update(entity);
+            db.SaveChanges();
         }
     }
 }

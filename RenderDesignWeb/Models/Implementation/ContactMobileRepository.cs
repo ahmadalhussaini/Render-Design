@@ -1,28 +1,43 @@
-﻿using RenderDesignWeb.Models.Interface;
+﻿using Microsoft.EntityFrameworkCore;
+using RenderDesignWeb.Context;
+using RenderDesignWeb.Models.Interface;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RenderDesignWeb.Models.Implementation
 {
     public class ContactMobileRepository : IContactMobileRepository
     {
-        public ContactMobail Add(ContactMobail contactMobail)
+        readonly RenderDesignContext db;
+        public ContactMobileRepository(RenderDesignContext db)
         {
-            throw new System.NotImplementedException();
+            db.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            this.db = db;
         }
 
-        public void Delete(ContactMobail contactMobail)
+        public ContactMobile Add(ContactMobile entity)
         {
-            throw new System.NotImplementedException();
+            var contactmobile = db.ContactsMobile.Add(entity);
+            db.SaveChanges();
+            return contactmobile.Entity;
         }
 
-        public ContactMobail GetContactMobail(int Id)
+        public void Delete(ContactMobile entity)
         {
-            throw new System.NotImplementedException();
+            db.ContactsMobile.Remove(entity);
+            db.SaveChanges();
         }
 
-        public List<ContactMobail> GetContactMobails()
+        public ContactMobile GetContactMobail(int Id)
         {
-            throw new System.NotImplementedException();
+            var contactmobile = db.ContactsMobile.SingleOrDefault(b => b.Id == Id);
+            return contactmobile;
+        }
+
+        public List<ContactMobile> GetContactMobails()
+        {
+            var contactmobile = db.ContactsMobile.ToList();
+            return contactmobile;
         }
     }
 }

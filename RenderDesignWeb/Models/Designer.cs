@@ -15,5 +15,6 @@ namespace RenderDesignWeb.Models
         public string PhoneNumber { get; set; }
 
         public DateTime CreatedAt { get; set; }
+        public object Project { get; internal set; }
     }
 }

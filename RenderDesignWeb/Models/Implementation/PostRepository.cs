@@ -1,28 +1,42 @@
-﻿using RenderDesignWeb.Models.Interface;
+﻿using Microsoft.EntityFrameworkCore;
+using RenderDesignWeb.Context;
+using RenderDesignWeb.Models.Interface;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RenderDesignWeb.Models.Implementation
 {
     public class PostRepository : IPostRepository
     {
-        public Post Add(Post post)
+        readonly RenderDesignContext db;
+        public PostRepository(RenderDesignContext db)
         {
-            throw new System.NotImplementedException();
+            db.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            this.db = db;
+        }
+        public Post Add(Post entity)
+        {
+            var post = db.Posts.Add(entity);
+            db.SaveChanges();
+            return post.Entity;
         }
 
-        public void Delete(Post post)
+        public void Delete(Post entity)
         {
-            throw new System.NotImplementedException();
+            db.Posts.Remove(entity);
+            db.SaveChanges();
         }
 
         public Post GetPost(int Id)
         {
-            throw new System.NotImplementedException();
+            var post = db.Posts.Where(x => x.Id == Id);
+            return post;
         }
 
         public List<Post> GetPosts()
         {
-            throw new System.NotImplementedException();
+            var post = db.Posts.ToList();
+            return post;
         }
     }
 }

@@ -1,38 +1,55 @@
-﻿using RenderDesignWeb.Models.Interface;
+﻿using Microsoft.EntityFrameworkCore;
+using RenderDesignWeb.Context;
+using RenderDesignWeb.Models.Interface;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RenderDesignWeb.Models.Implementation
 {
     public class DesignerRepository : IDesignerRepository
     {
-        public void Delete(Designer designer)
+        readonly RenderDesignContext db;
+        public DesignerRepository(RenderDesignContext db)
         {
-            throw new System.NotImplementedException();
+            db.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            this.db = db;
+        }
+        public void Delete(Designer entity)
+        {
+            db.Designers.Remove(entity);
+            db.SaveChanges();
         }
 
         public List<Designer> GetDesigner()
         {
-            throw new System.NotImplementedException();
+            var designer = db.Designers.ToList();
+            return designer;
         }
 
         public Project GetPDesigner(int Id)
         {
-            throw new System.NotImplementedException();
+            var designer = db.Designers.SingleOrDefault(b => b.Id == Id).Project;
+            return (Project)designer;
         }
 
         public Designer Login(string email, string password)
         {
-            throw new System.NotImplementedException();
+            var designer = db.Designers.SingleOrDefault(x => x.Email == email && x.Password == password);
+
+            return designer;
         }
 
-        public Designer Register(Designer designer)
+        public Designer Register(Designer entity)
         {
-            throw new System.NotImplementedException();
+            var designer= db.Designers.Add(entity);
+            db.SaveChanges();
+            return designer.Entity;
         }
 
-        public void Update(Designer designer)
+        public void Update(Designer entity)
         {
-            throw new System.NotImplementedException();
+            db.Designers.Update(entity);
+            db.SaveChanges();
         }
     }
 }
