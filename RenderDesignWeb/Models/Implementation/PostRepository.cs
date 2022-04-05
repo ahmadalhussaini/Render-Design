@@ -9,10 +9,10 @@ namespace RenderDesignWeb.Models.Implementation
     public class PostRepository : IPostRepository
     {
         readonly RenderDesignContext db;
-        public PostRepository(RenderDesignContext db)
+        public PostRepository(RenderDesignContext _db)
         {
+            db = _db;
             db.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            this.db = db;
         }
         public Post Add(Post entity)
         {

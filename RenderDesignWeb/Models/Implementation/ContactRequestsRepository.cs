@@ -10,10 +10,10 @@ namespace RenderDesignWeb.Models.Implementation
     public class ContactRequestsRepository : IContactRequestsRepository
     {
         readonly RenderDesignContext db;
-        public ContactRequestsRepository(RenderDesignContext db)
+        public ContactRequestsRepository(RenderDesignContext _db)
         {
+            db = _db;
             db.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            this.db = db;
         }
         public ContactRequests Add(ContactRequests entity)
         {

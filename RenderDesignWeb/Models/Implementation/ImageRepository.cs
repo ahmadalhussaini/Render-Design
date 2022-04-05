@@ -9,10 +9,10 @@ namespace RenderDesignWeb.Models.Implementation
     public class ImageRepository : IImageRepository
     {
         readonly RenderDesignContext db;
-        public ImageRepository(RenderDesignContext db)
+        public ImageRepository(RenderDesignContext _db)
         {
+            db = _db;
             db.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            this.db = db;
         }
         public Image Add(Image entity)
         {

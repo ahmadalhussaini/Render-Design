@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace RenderDesignWeb.Models
 {
@@ -15,6 +16,6 @@ namespace RenderDesignWeb.Models
         public string PhoneNumber { get; set; }
 
         public DateTime CreatedAt { get; set; }
-        public object Project { get; internal set; }
+        public virtual List<Project> Projects { get; set; }
     }
 }

@@ -9,10 +9,10 @@ namespace RenderDesignWeb.Models.Implementation
     public class ProjectRepository : IProjectRepository
     {
         readonly RenderDesignContext db;
-        public ProjectRepository(RenderDesignContext db)
+        public ProjectRepository(RenderDesignContext _db)
         {
+            db = _db;
             db.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            this.db = db;
         }
 
         public Project Add(Project entity)

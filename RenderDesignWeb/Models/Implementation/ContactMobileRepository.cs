@@ -9,10 +9,10 @@ namespace RenderDesignWeb.Models.Implementation
     public class ContactMobileRepository : IContactMobileRepository
     {
         readonly RenderDesignContext db;
-        public ContactMobileRepository(RenderDesignContext db)
+        public ContactMobileRepository(RenderDesignContext _db)
         {
+            db = _db;
             db.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            this.db = db;
         }
 
         public ContactMobile Add(ContactMobile entity)

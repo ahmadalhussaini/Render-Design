@@ -9,10 +9,10 @@ namespace RenderDesignWeb.Models.Implementation
     public class DesignerRepository : IDesignerRepository
     {
         readonly RenderDesignContext db;
-        public DesignerRepository(RenderDesignContext db)
+        public DesignerRepository(RenderDesignContext _db)
         {
+            db = _db;
             db.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            this.db = db;
         }
         public void Delete(Designer entity)
         {
@@ -26,10 +26,10 @@ namespace RenderDesignWeb.Models.Implementation
             return designer;
         }
 
-        public Project GetPDesigner(int Id)
+        public Designer GetPDesigner(int Id)
         {
-            var designer = db.Designers.SingleOrDefault(b => b.Id == Id).Project;
-            return (Project)designer;
+            var designer = db.Designers.SingleOrDefault(b => b.Id == Id);
+            return designer;
         }
 
         public Designer Login(string email, string password)
