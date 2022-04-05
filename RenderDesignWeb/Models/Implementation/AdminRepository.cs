@@ -7,7 +7,7 @@ namespace RenderDesignWeb.Models.Implementation
 {
     public class AdminRepository : IAdminRepository
     {
-        RenderDesignContext db;
+       readonly RenderDesignContext db;
          public AdminRepository(RenderDesignContext db)
     {
         db.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;

@@ -29,7 +29,7 @@ namespace RenderDesignWeb.Models.Implementation
 
         public Post GetPost(int Id)
         {
-            var post = db.Posts.Where(x => x.Id == Id);
+            var post = db.Posts.SingleOrDefault(x => x.Id == Id);
             return post;
         }
 

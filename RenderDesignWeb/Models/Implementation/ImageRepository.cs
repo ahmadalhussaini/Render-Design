@@ -41,7 +41,7 @@ namespace RenderDesignWeb.Models.Implementation
 
         public Image GetImg(int Id)
         {
-            var image = db.Images.Where(x => x.Id == Id);
+            var image = db.Images.SingleOrDefault(x => x.Id == Id);
             return image;
         }
 
