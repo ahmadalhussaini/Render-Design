@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RenderDesignWeb.Context;
+using RenderDesignWeb.Models.Implementation;
+using RenderDesignWeb.Models.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,14 @@ namespace RenderDesignWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<IImageRepository, ImageRepository>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IContactRequestsRepository, ContactRequestsRepository>();
+            services.AddScoped<IContactMobileRepository, ContactMobileRepository>();
+            services.AddScoped<IDesignerRepository, DesignerRepository>();
             services.AddControllersWithViews();
             services.AddDbContext<RenderDesignContext>(options => options.UseSqlServer("Server=.;Database=RenderDesign_db;Trusted_Connection=True;"));
 
