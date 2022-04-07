@@ -1,6 +1,6 @@
-﻿using Acr.UserDialogs;
-using Fluent.Infrastructure.FluentModel;
-using Microsoft.AspNet.Identity.Owin;
+﻿//using Acr.UserDialogs;
+//using Fluent.Infrastructure.FluentModel;
+//using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -28,8 +28,5 @@ namespace RenderDesignWeb.Controllers
         {
             return View();
         }
-       
-        }
-
     }
 }

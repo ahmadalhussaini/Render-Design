@@ -1,0 +1,7 @@
+D:\Ameera\Ahmed\RenderDesignWeb\RenderDesignWeb\obj\Release\netcoreapp3.1\RenderDesignWeb.csproj.AssemblyReference.cache
+D:\Ameera\Ahmed\RenderDesignWeb\RenderDesignWeb\obj\Release\netcoreapp3.1\RenderDesignWeb.AssemblyInfoInputs.cache
+D:\Ameera\Ahmed\RenderDesignWeb\RenderDesignWeb\obj\Release\netcoreapp3.1\RenderDesignWeb.AssemblyInfo.cs
+D:\Ameera\Ahmed\RenderDesignWeb\RenderDesignWeb\obj\Release\netcoreapp3.1\RenderDesignWeb.csproj.CoreCompileInputs.cache
+D:\Ameera\Ahmed\RenderDesignWeb\RenderDesignWeb\obj\Release\netcoreapp3.1\RenderDesignWeb.MvcApplicationPartsAssemblyInfo.cache
+D:\Ameera\Ahmed\RenderDesignWeb\RenderDesignWeb\obj\Release\netcoreapp3.1\RenderDesignWeb.RazorAssemblyInfo.cache
+D:\Ameera\Ahmed\RenderDesignWeb\RenderDesignWeb\obj\Release\netcoreapp3.1\RenderDesignWeb.RazorAssemblyInfo.cs
