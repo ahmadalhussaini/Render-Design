@@ -22,9 +22,9 @@ We work in Jordan, UAE and Saudi Arabia">
 <body>
     <header>
         <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
-            <img src="~/imges/ابيض.png" height="50" width="50" />
+            
 
-            <a class="navbar-brand" asp-controller="Home" asp-action="Home">Millimeter<p style="display:inline;margin-left:2px;">Design</p> </a>
+            <a class="navbar-brand" asp-controller="Home" asp-action="Home">Render Design </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -47,17 +47,31 @@ We work in Jordan, UAE and Saudi Arabia">
 
                         </div>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-controller="Home" asp-action="AboutUs"> About Us  <span class="sr-only">(current)</span></a>
+                                        <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Designer
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" asp-controller="Home" asp-action="Projects" asp-route-type="Commercial">Commercial</a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="Projects" asp-route-type="Residential">Residential</a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="Projects" asp-route-type="Landscape">Landscape</a>
+
+                        </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link d-none" asp-controller="Home" asp-action="Protfolio"> portfolio <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" asp-controller="Home" asp-action="AboutUs"> Post  <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-controller="Home" asp-action="Teams">Team <span class="sr-only">(current)</span></a>
-                    </li>
+                
+                   
+                   
                     <li class="nav-item active">
                         <a class="nav-link" asp-controller="Home" asp-action="ContactUs">Contact Us <span class="sr-only">(current)</span></a>
+                    </li>
+                                         <li class="nav-item active">
+                        <a class="nav-link" asp-controller="Home" asp-action="AboutUs"> Log in  <span class="sr-only">(current)</span></a>
+                    </li>
+                                     <li class="nav-item active">
+                        <a class="nav-link" asp-controller="Home" asp-action="AboutUs"> Sign up  <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
 
@@ -74,7 +88,7 @@ We work in Jordan, UAE and Saudi Arabia">
             <div class="row mb-5">
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">About Millimeter</h2>
+                        <h2 class="ftco-heading-2">About Render</h2>
                         <p>
                             company Millimeter design studio works in many areas of design
                             Interior  Design | Architectural Solutions | Branding | Furniture Design | Lighting Design | Contracting  | Implementation And Supervison
