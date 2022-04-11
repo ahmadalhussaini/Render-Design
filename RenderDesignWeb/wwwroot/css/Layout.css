@@ -16,7 +16,7 @@ header {
     z-index:4  
 }
 .collapse{
-    margin-left:40% ;   
+    margin-left:25% ;   
 }
 .collapse ul li a {
     transition: all 0.5s linear;

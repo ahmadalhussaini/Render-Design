@@ -26,7 +26,7 @@ namespace RenderDesignWeb.Models.Implementation
             return designer;
         }
 
-        public Designer GetPDesigner(int Id)
+        public Designer GetDesigner(int Id)
         {
             var designer = db.Designers.SingleOrDefault(b => b.Id == Id);
             return designer;

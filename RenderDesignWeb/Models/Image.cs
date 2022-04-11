@@ -13,6 +13,6 @@ namespace RenderDesignWeb.Models
 
         public string PathImg { set; get; }
 
-        public DateTime CreatedAt { get; set; }
+        
     }
 }
