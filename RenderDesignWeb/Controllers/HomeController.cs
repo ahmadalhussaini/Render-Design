@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using RenderDesignWeb.Models;
 using RenderDesignWeb.Models.Interface;
+using RenderDesignWeb.ViweModel.Contact;
 using RenderDesignWeb.ViweModel.Designer;
 using RenderDesignWeb.ViweModel.Image;
 using RenderDesignWeb.ViweModel.Project;
@@ -19,13 +20,15 @@ namespace RenderDesignWeb.Controllers
         private readonly IProjectRepository _projectRepository;
         private IImageRepository _imageRepository;
         private IDesignerRepository _designerRepository;
+        private IContactRequestsRepository  _contactRequestsRepository;
 
 
-        public HomeController(IProjectRepository projectRepository, IImageRepository imageRepository, IDesignerRepository designerRepository)
+        public HomeController(IContactRequestsRepository contactRequestsRepository, IProjectRepository projectRepository, IImageRepository imageRepository, IDesignerRepository designerRepository)
         {
             _projectRepository = projectRepository;
             _imageRepository = imageRepository;
             _designerRepository = designerRepository;
+            _contactRequestsRepository = contactRequestsRepository;
 
         }
         public IActionResult Home()
@@ -76,7 +79,7 @@ namespace RenderDesignWeb.Controllers
                 });
 
             }
-            pro.Projects = model;
+            pro.ProjectsViewModel = model;
 
             return View(pro);
         }
@@ -115,10 +118,22 @@ namespace RenderDesignWeb.Controllers
             return View();
         }
         
-        
+        [HttpGet]
         public IActionResult ContactUs()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult ContactUs(ContactVm contact)
+        {
+            _contactRequestsRepository.Add(new ContactRequests()
+            {
+                Email = contact.Email,
+                Name = contact.Name,
+                Subject = contact.Subject
+            }) ;
+
+            return RedirectToAction(nameof(Index));
         }
 
     }

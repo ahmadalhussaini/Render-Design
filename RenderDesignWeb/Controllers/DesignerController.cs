@@ -41,31 +41,7 @@ namespace RenderDesignWeb.Controllers
             List.designer = _designer;
             return View(List);
         }
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: ProjectController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(DesignerViewModel designer)
-        {
-
-            var _designer = new Designer()
-            {
-                Name = designer.Name,
-                Password=designer.Password,
-                PhoneNumber=designer.PhoneNumber,
-                CreatedAt=designer.CreatedAt,
-                Email = designer.Email,
-            };
-           
-            _designerRepository.Register(_designer);
-
-            return RedirectToAction(nameof(Index));
-
-        }
+       
         public ActionResult Delete(int id)
         {
             var designer = _designerRepository.GetDesigner(id);
