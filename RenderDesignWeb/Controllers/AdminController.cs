@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using RenderDesignWeb.Models;
 using RenderDesignWeb.Models.Interface;
 using RenderDesignWeb.ViweModel.Admain;
 using RenderDesignWeb.ViweModel.Contact;
@@ -21,13 +22,10 @@ namespace RenderDesignWeb.Controllers
     public class AdminController : Controller
     {
         private IAdminRepository _adminRepository;
-        private IContactRequestsRepository _contactRequestsRepository;
 
-
-        public AdminController(IContactRequestsRepository contactRequestsRepository,IAdminRepository adminRepository)
+        public AdminController(IAdminRepository adminRepository)
         {
             _adminRepository = adminRepository;
-            _contactRequestsRepository = contactRequestsRepository;
         }
         [HttpGet]
         public IActionResult Login()
@@ -79,31 +77,7 @@ namespace RenderDesignWeb.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction("Login");
         }
-        [HttpGet]
-        public IActionResult GetContactRequests()
-        {
-            var model = new ContactListVm();
-            var List = new List<ContactVm>();
-             var contacts = _contactRequestsRepository.GetContactRequests();
-            foreach (var i in contacts) {
-                List.Add(new ContactVm() { 
-                Subject = i.Subject,
-                Email = i.Email,
-                Name = i.Email
-                });
-            }
-            model.Contacts = List;
-             return View(model);
-        }
-        [HttpGet]
-        public IActionResult DeleteContactRequest(int id)
-        {
-
-            _contactRequestsRepository.Delete(id);
-            return View();
-        }
-
-
+      
 
 
 

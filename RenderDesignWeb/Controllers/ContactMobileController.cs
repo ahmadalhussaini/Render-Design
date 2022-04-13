@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RenderDesignWeb.Models;
 using RenderDesignWeb.Models.Interface;
+using RenderDesignWeb.ViweModel.ContactMobile;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,26 @@ namespace RenderDesignWeb.Controllers
         public void EnterMobileNumberToContact(ContactMobile contactMobile)
         {
             _contactMobileRepository.Add(contactMobile);
+
+        }
+        public void DeleteMobileNumberToContact(ContactMobile contactMobile)
+        {
+            _contactMobileRepository.Delete(contactMobile);
+
+        }
+        public IActionResult GetContactMobiles()
+        {
+            var model = new List<ContactMobileVM>();
+            var contacts= _contactMobileRepository.GetContactMobails();
+            foreach (var item in contacts) {
+                model.Add(new ContactMobileVM()
+                {
+                    PhoneNumber = item.PhoneNumber,
+                    Id=item.Id,
+                }) ;
+            }
+            return View(model);
+
         }
     }
 }
