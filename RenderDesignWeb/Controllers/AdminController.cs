@@ -94,14 +94,14 @@ namespace RenderDesignWeb.Controllers
             }
             model.Contacts = List;
              return View(model);
-        } 
-        //[HttpGet]
-        //public IActionResult GetContactRequest(int id)
-        //{
-            
-        //     //_contactRequestsRepository.Delete(id);
-        //     //           return View();
-        //}
+        }
+        [HttpGet]
+        public IActionResult DeleteContactRequest(int id)
+        {
+
+            _contactRequestsRepository.Delete(id);
+            return View();
+        }
 
 
 
