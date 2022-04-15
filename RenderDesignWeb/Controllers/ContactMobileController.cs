@@ -19,11 +19,6 @@ namespace RenderDesignWeb.Controllers
         {
             return View();
         }
-        public void EnterMobileNumberToContact(ContactMobile contactMobile)
-        {
-            _contactMobileRepository.Add(contactMobile);
-
-        }
         public void DeleteMobileNumberToContact(ContactMobile contactMobile)
         {
             _contactMobileRepository.Delete(contactMobile);

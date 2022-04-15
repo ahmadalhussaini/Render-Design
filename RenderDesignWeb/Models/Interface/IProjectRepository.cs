@@ -6,7 +6,7 @@ namespace RenderDesignWeb.Models.Interface
     {
         List<Project> GetProjects();
         List<Project> GetProjects(string type);
-        List<Project> GetProjects(Designer designer);
+        List<Project> ProjectsByDesigner(string designer);
         Project GetProject(int Id);
         Project Add(Project product);
         void Update(Project project);

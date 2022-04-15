@@ -11,6 +11,7 @@ using RenderDesignWeb.Models;
 using RenderDesignWeb.Models.Interface;
 using RenderDesignWeb.ViweModel.Admain;
 using RenderDesignWeb.ViweModel.Contact;
+using RenderDesignWeb.ViweModel.Project;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,90 +22,32 @@ namespace RenderDesignWeb.Controllers
 {
     public class AdminController : Controller
     {
-        private IAdminRepository _adminRepository;
 
-        public AdminController(IAdminRepository adminRepository)
-        {
-            _adminRepository = adminRepository;
+        public IProjectRepository _projectRepository;
+
+        public AdminController(IProjectRepository projectRepository) {
+            _projectRepository = projectRepository;
         }
-        [HttpGet]
-        public IActionResult Login()
-
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViweModel model)
-        {
-            if (ModelState.IsValid)
+        public IActionResult Projects() {
+            var projects = _projectRepository.GetProjects();
+            var List = new ProjectListViewModel();
+            var _projects = new List<ProjectViewModel>();
+            foreach (var elem in projects)
             {
-
-                var admin = _adminRepository.Login(model.Email, model.Password);
-                if (admin == null)
+                var model = new ProjectViewModel
                 {
-                    TempData["Error"] = "Username or Password is incorrect";
-                    return View("Login");
-                }
-                var clamis = new List<Claim>();
-                clamis.Add(new Claim("userId", admin.Id.ToString()));
-                clamis.Add(new Claim("Email", admin.Email));
-                clamis.Add(new Claim(ClaimTypes.NameIdentifier, admin.Email));
-                var claimsIdentity = new ClaimsIdentity(clamis, CookieAuthenticationDefaults.AuthenticationScheme);
-                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-                var authProperties = new AuthenticationProperties
-                {
-
-                    ExpiresUtc = DateTimeOffset.UtcNow.AddHours(1),
-                    IsPersistent = true,
-
+                    Id = elem.Id,
+                    Name = elem.Name,
+                    Description = elem.Description,
+                    Location = elem.Location,
+                    Type = elem.Type,
                 };
 
-                await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity),
-                    authProperties);
+                _projects.Add(model);
 
-                return Redirect("/Project/Index");
             }
-            TempData["Error"] = "Username or Password is incorrect";
-            return RedirectToAction("Login");
+            List.ProjectsViewModel = _projects;
+            return View(List);
         }
-        [HttpGet]
-        public async Task<IActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync();
-            return RedirectToAction("Login");
-        }
-      
-
-
-
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        //// POST: ProjectController/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(DesignerViewModel designer)
-        //{
-
-        //    var _designer = new Designer()
-        //    {
-        //        Name = designer.Name,
-        //        Password = designer.Password,
-        //        PhoneNumber = designer.PhoneNumber,
-        //        CreatedAt = designer.CreatedAt,
-        //        Email = designer.Email,
-        //    };
-
-        //    _designerRepository.Register(_designer);
-
-        //    return RedirectToAction(nameof(Index));
-
-        //}
     }
 }

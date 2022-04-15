@@ -21,14 +21,19 @@ namespace RenderDesignWeb.Controllers
         private IImageRepository _imageRepository;
         private IDesignerRepository _designerRepository;
         private IContactRequestsRepository  _contactRequestsRepository;
+        public IContactMobileRepository _contactMobileRepository;
 
 
-        public HomeController(IContactRequestsRepository contactRequestsRepository, IProjectRepository projectRepository, IImageRepository imageRepository, IDesignerRepository designerRepository)
+
+        public HomeController(IContactRequestsRepository contactRequestsRepository,
+            IContactMobileRepository contactMobileRepository,
+            IProjectRepository projectRepository, IImageRepository imageRepository, IDesignerRepository designerRepository)
         {
             _projectRepository = projectRepository;
             _imageRepository = imageRepository;
             _designerRepository = designerRepository;
             _contactRequestsRepository = contactRequestsRepository;
+            _contactMobileRepository = contactMobileRepository;
 
         }
         public IActionResult Home()
@@ -60,9 +65,32 @@ namespace RenderDesignWeb.Controllers
             return RedirectToAction(nameof(Index));
 
         }
-        public IActionResult Projects(string type)
+        public IActionResult ProjectsByType(string type)
         {
             var projects = _projectRepository.GetProjects(type).OrderByDescending(x => x.Id).ToList();
+            var model = new List<ProjectViewModel>();
+            var pro = new ProjectListViewModel();
+            foreach (var elem in projects)
+            {
+                var imge = _imageRepository.GetImages(elem.Id).Take(1).ToList();
+
+                model.Add(new ProjectViewModel()
+                {
+                    Id = elem.Id,
+                    Name = elem.Name,
+                    FirstImage = imge[0].PathImg,
+                    Type = elem.Type
+
+                });
+
+            }
+            pro.ProjectsViewModel = model;
+
+            return View(pro);
+        } 
+        public IActionResult ProjectsByDesigner(string name)
+        {
+            var projects = _projectRepository.ProjectsByDesigner(name).OrderByDescending(x => x.Id).ToList();
             var model = new List<ProjectViewModel>();
             var pro = new ProjectListViewModel();
             foreach (var elem in projects)
@@ -134,6 +162,11 @@ namespace RenderDesignWeb.Controllers
             }) ;
 
             return RedirectToAction(nameof(Index));
+        }
+        public void EnterMobileNumberToContact(ContactMobile contactMobile)
+        {
+            _contactMobileRepository.Add(contactMobile);
+
         }
 
     }

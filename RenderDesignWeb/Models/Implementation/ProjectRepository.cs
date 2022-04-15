@@ -46,9 +46,9 @@ namespace RenderDesignWeb.Models.Implementation
             return project;
         }
 
-        public List<Project> GetProjects(Designer designer)
+        List<Project> ProjectsByDesigner(string designer)
         {
-            var project = db.Projects.Where(x => x.Designer == designer).ToList();
+            var project = db.Projects.Where(x => x.Designer.Name == designer).ToList();
             return project;
         }
 
