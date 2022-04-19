@@ -19,20 +19,25 @@ namespace RenderDesignWeb.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var model = new ContactListVm();
-            var List = new List<ContactVm>();
-            var contacts = _contactRequestsRepository.GetContactRequests();
-            foreach (var item in contacts)
+            var contactmobail = _contactRequestsRepository.GetContactRequests();
+            var List = new ContactRequestsListViewModel();
+            var _designer = new List<ContactRequestsViewModel>();
+            foreach (var elem in contactmobail)
             {
-                List.Add(new ContactVm()
+                var model = new ContactRequestsViewModel
                 {
-                    Subject = item.Subject,
-                    Email = item.Email,
-                    Name = item.Name
-                });
+                    Id = elem.Id,
+                    Name=elem.Name,
+                    Email=elem.Email,
+                    Subject=elem.Subject
+
+                };
+
+                _designer.Add(model);
+
             }
-            model.Contacts = List;
-            return View(model);
+            List.ContactRequestsViewModel = _designer;
+            return View(List);
         }
         [HttpGet]
         public IActionResult DeleteContactRequest(ContactRequests contact)

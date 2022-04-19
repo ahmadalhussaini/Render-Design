@@ -5,14 +5,9 @@ using System.Threading.Tasks;
 
 namespace RenderDesignWeb.ViweModel.Contact
 {
-    public class ContactListVm
+    public class ContactRequestsViewModel
     {
-        public List<ContactVm> Contacts { get; set; }
-
-       
-    }
-    public class ContactVm
-    {
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public string Email { get; set; }

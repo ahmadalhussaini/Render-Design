@@ -18,28 +18,30 @@ namespace RenderDesignWeb.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var contactmobail = _postRepository.GetPosts();
+            var List = new PostListViewModel();
+            var _designer = new List<PostViewModel>();
+            foreach (var elem in contactmobail)
+            {
+                var model = new PostViewModel
+                {
+                    Id = elem.Id,
+                    Name=elem.Name,
+                    Subject=elem.Subject
+
+                };
+
+                _designer.Add(model);
+
+            }
+            List.PostViewModel = _designer;
+            return View(List);
         }
         public void DeletePost(Post post)
         {
             _postRepository.Delete(post);
 
         }
-        public IActionResult GetContactMobiles()
-        {
-            var model = new List<PostViewModel>();
-            var contacts = _postRepository.GetPosts();
-            foreach (var item in contacts)
-            {
-                model.Add(new PostViewModel()
-                {
-                    Name = item.Name,
-                    Subject=item.Subject,
-                    Id = item.Id,
-                });
-            }
-            return View(model);
-
-        }
+        
     }
 }

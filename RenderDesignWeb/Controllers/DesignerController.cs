@@ -38,7 +38,7 @@ namespace RenderDesignWeb.Controllers
                 _designer.Add(model);
 
             }
-            List.designer = _designer;
+            List.DesignerViewModel = _designer;
             return View(List);
         }
        

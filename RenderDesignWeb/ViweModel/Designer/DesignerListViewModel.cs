@@ -7,8 +7,6 @@ namespace RenderDesignWeb.ViweModel.Designer
 {
     public class DesignerListViewModel
     {
-        internal List<DesignerViewModel> designer;
-
-        public List<DesignerViewModel> designerViewModel { get; set; }
+        public List<DesignerViewModel> DesignerViewModel { get; set; }
     }
 }

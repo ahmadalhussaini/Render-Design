@@ -17,26 +17,29 @@ namespace RenderDesignWeb.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var contactmobail = _contactMobileRepository.GetContactMobails();
+            var List = new ContactMobileListViewModel();
+            var _designer = new List<ContactMobileViewModel>();
+            foreach (var elem in contactmobail)
+            {
+                var model = new ContactMobileViewModel
+                {
+                    Id = elem.Id,
+                    PhoneNumber=elem.PhoneNumber
+
+                };
+
+                _designer.Add(model);
+
+            }
+            List.ContactMobileViewModel = _designer;
+            return View(List);
         }
         public void DeleteMobileNumberToContact(ContactMobile contactMobile)
         {
             _contactMobileRepository.Delete(contactMobile);
 
         }
-        public IActionResult GetContactMobiles()
-        {
-            var model = new List<ContactMobileVM>();
-            var contacts= _contactMobileRepository.GetContactMobails();
-            foreach (var item in contacts) {
-                model.Add(new ContactMobileVM()
-                {
-                    PhoneNumber = item.PhoneNumber,
-                    Id=item.Id,
-                }) ;
-            }
-            return View(model);
-
-        }
+       
     }
 }

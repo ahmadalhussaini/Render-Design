@@ -10,6 +10,6 @@ namespace RenderDesignWeb.Models
 
         public string Subject { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+       
     }
 }

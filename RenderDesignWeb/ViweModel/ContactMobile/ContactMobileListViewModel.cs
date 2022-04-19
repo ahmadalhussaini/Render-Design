@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace RenderDesignWeb.ViweModel.ContactMobile
 {
-    public class ContactMobileVM
+    public class ContactMobileListViewModel
     {
-        public int Id { get; set; }
+        public List<ContactMobileViewModel> ContactMobileViewModel { get; set; }
 
-        public string PhoneNumber { get; set; }
+     
 
     }
 }

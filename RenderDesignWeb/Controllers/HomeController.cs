@@ -170,14 +170,16 @@ namespace RenderDesignWeb.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult ContactUs(ContactVm contact)
-        {
-            _contactRequestsRepository.Add(new ContactRequests()
+        public IActionResult ContactUs(ContactRequestsListViewModel contact)
+        {/*
+            _contactRequestsRepository.Add(new ContactRequestsViewModel()
             {
                 Email = contact.Email,
                 Name = contact.Name,
                 Subject = contact.Subject
-            }) ;
+              
+        }) ;
+             */
 
             return RedirectToAction(nameof(Index));
         }

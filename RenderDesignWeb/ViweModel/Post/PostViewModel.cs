@@ -13,6 +13,6 @@ namespace RenderDesignWeb.ViweModel.Post
 
         public string Subject { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+        
     }
 }
