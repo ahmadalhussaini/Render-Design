@@ -5,6 +5,7 @@ using RenderDesignWeb.Models.Interface;
 using RenderDesignWeb.ViweModel.Contact;
 using RenderDesignWeb.ViweModel.Designer;
 using RenderDesignWeb.ViweModel.Image;
+using RenderDesignWeb.ViweModel.Post;
 using RenderDesignWeb.ViweModel.Project;
 using System;
 using System.Collections.Generic;
@@ -22,18 +23,21 @@ namespace RenderDesignWeb.Controllers
         private IDesignerRepository _designerRepository;
         private IContactRequestsRepository  _contactRequestsRepository;
         public IContactMobileRepository _contactMobileRepository;
+        public IPostRepository _postRepository;
 
 
 
         public HomeController(IContactRequestsRepository contactRequestsRepository,
             IContactMobileRepository contactMobileRepository,
-            IProjectRepository projectRepository, IImageRepository imageRepository, IDesignerRepository designerRepository)
+            IProjectRepository projectRepository, IImageRepository imageRepository, IDesignerRepository designerRepository,
+            IPostRepository postRepository)
         {
             _projectRepository = projectRepository;
             _imageRepository = imageRepository;
             _designerRepository = designerRepository;
             _contactRequestsRepository = contactRequestsRepository;
             _contactMobileRepository = contactMobileRepository;
+            _postRepository = postRepository;
 
         }
         public IActionResult Home()
@@ -145,7 +149,21 @@ namespace RenderDesignWeb.Controllers
         {
             return View();
         }
-        
+        public IActionResult Post()
+        {
+            return View();
+        }
+        public IActionResult Post(PostViewModel post)
+        {
+            _postRepository.Add(new Post()
+            {               
+                Name = post.Name,
+                Subject = post.Subject
+            });
+
+            return RedirectToAction(nameof(Index));
+        }
+
         [HttpGet]
         public IActionResult ContactUs()
         {
