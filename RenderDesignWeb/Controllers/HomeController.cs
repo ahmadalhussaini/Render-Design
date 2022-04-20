@@ -40,7 +40,7 @@ namespace RenderDesignWeb.Controllers
             _postRepository = postRepository;
 
         }
-        public IActionResult Home()
+        public IActionResult Index()
         {
             return View();
         }
@@ -155,13 +155,14 @@ namespace RenderDesignWeb.Controllers
         }
         public IActionResult Post(PostViewModel post)
         {
-            _postRepository.Add(new Post()
+          _postRepository.Add(new Post()
             {               
                 Name = post.Name,
                 Subject = post.Subject
             });
 
             return RedirectToAction(nameof(Index));
+         
         }
 
         [HttpGet]

@@ -143,8 +143,6 @@ C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netco
 C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\RenderDesignWeb.TagHelpers.input.cache
 C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\RenderDesignWeb.TagHelpers.output.cache
 C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\RenderDesignWeb.RazorCoreGenerate.cache
-C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -166,3 +164,9 @@ C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netco
 C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\ContactMobile\Index.cshtml.g.cs
 C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\ContactRequests\Index.cshtml.g.cs
 C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Post\Index.cshtml.g.cs
+C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutDesigner.cshtml.g.cs
+C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Admin\IndexProject.cshtml.g.cs
+C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Details.cshtml.g.cs
+C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Home\Post.cshtml.g.cs
+C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Home\ContactUs.cshtml.g.cs

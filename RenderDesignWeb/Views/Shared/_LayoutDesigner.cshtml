@@ -64,7 +64,7 @@ to get the desired effect
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a asp-controller="Admin" asp-action="Index" class="brand-link">
+            <a asp-controller="Project" asp-action="Index" class="brand-link">
                 <img src="~/imges/logo3.PNG" alt="..." class="brand-image"/>
                 <span class="brand-text font-weight-light">Render Design</span>
             </a>
@@ -74,17 +74,9 @@ to get the desired effect
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        
                         <li class="nav-item has-treeview">
-                            <a asp-controller="Designer" asp-action="Index" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    Designer
-                                </p>
-                            </a>
-
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a asp-controller="Admin" asp-action="IndexProject" class="nav-link">
+                            <a asp-controller="Project" asp-action="Index" class="nav-link">
                                 <i class="nav-icon fas fa-ball-pile"></i>
                                 <p>
                                     Projects
@@ -101,33 +93,9 @@ to get the desired effect
                             </a>
 
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a asp-controller="ContactMobile" asp-action="Index" class="nav-link">
-                                <i class="nav-icon  fas fa-phone-alt"></i>
-                                <p>
-                                    ContactMobile
-                                </p>
-                            </a>
-
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a asp-controller="ContactRequests" asp-action="Index" class="nav-link">
-                                <i class="nav-icon fas fa-comment"></i>
-                                <p>
-                                    ContactRequests
-                                </p>
-                            </a>
-
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a asp-controller="Post" asp-action="Index" class="nav-link">
-                                <i class="nav-icon fas fa-mail-bulk"></i>
-                                <p>
-                                    Post
-                                </p>
-                            </a>
-
-                        </li>
+                       
+                       
+                       
 
                     </ul>
                 </nav>
