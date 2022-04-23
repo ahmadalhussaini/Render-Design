@@ -7,8 +7,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Millimeter Design</title>
-    <link rel="icon" href="~/imges/73669ef0-cd2c-4175-90b6-cbfcc53a9e2d.jpg">
+    <title>Render Design</title>
+    <link rel="icon" href="~/imges/logo3.PNG">
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/3.2.1/assets/font-awesome/css/font-awesome.css">
@@ -64,9 +64,9 @@ to get the desired effect
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a asp-controller="Project" asp-action="Index" class="brand-link">
-                <img src="~/imges/73669ef0-cd2c-4175-90b6-cbfcc53a9e2d.jpg" alt="..." class="brand-image">
-                <span class="brand-text font-weight-light">Millimeter design</span>
+            <a asp-controller="Admin" asp-action="Index" class="brand-link">
+                <img src="~/imges/logo3.PNG" alt="..." class="brand-image"/>
+                <span class="brand-text font-weight-light">Render Design</span>
             </a>
 
             <!-- Sidebar -->
@@ -75,8 +75,17 @@ to get the desired effect
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item has-treeview">
-                            <a asp-controller="Project" asp-action="Index" class="nav-link">
-                                <i class="nav-icon fas fa-home"></i>
+                            <a asp-controller="Designer" asp-action="Index" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Designer
+                                </p>
+                            </a>
+
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a asp-controller="Admin" asp-action="IndexProject" class="nav-link">
+                                <i class="nav-icon fas fa-ball-pile"></i>
                                 <p>
                                     Projects
                                 </p>
@@ -93,19 +102,28 @@ to get the desired effect
 
                         </li>
                         <li class="nav-item has-treeview">
-                            <a asp-controller="Team" asp-action="Index" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
+                            <a asp-controller="ContactMobile" asp-action="Index" class="nav-link">
+                                <i class="nav-icon  fas fa-phone-alt"></i>
                                 <p>
-                                    Teams
+                                    ContactMobile
                                 </p>
                             </a>
 
                         </li>
                         <li class="nav-item has-treeview">
                             <a asp-controller="ContactRequests" asp-action="Index" class="nav-link">
-                                <i class=" nav-icon fas fa-bell"></i>
+                                <i class="nav-icon fas fa-comment"></i>
                                 <p>
                                     ContactRequests
+                                </p>
+                            </a>
+
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a asp-controller="Post" asp-action="Index" class="nav-link">
+                                <i class="nav-icon fas fa-mail-bulk"></i>
+                                <p>
+                                    Post
                                 </p>
                             </a>
 
@@ -131,8 +149,8 @@ to get the desired effect
         <!-- Main Footer -->
         <footer class="main-footer">
             <strong>
-                Copyright &copy; By <span id="year"></span>  <a href="https://www.facebook.com/profile.php?id=100011180761843" target="_blank">
-                    Ahmad Alhussaini
+                Copyright &copy; By <span id="year"></span>  
+                    Render Design
 
                 </a>
             </strong>

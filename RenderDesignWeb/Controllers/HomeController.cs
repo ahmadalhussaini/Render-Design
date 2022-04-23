@@ -5,6 +5,7 @@ using RenderDesignWeb.Models.Interface;
 using RenderDesignWeb.ViweModel.Contact;
 using RenderDesignWeb.ViweModel.Designer;
 using RenderDesignWeb.ViweModel.Image;
+using RenderDesignWeb.ViweModel.Post;
 using RenderDesignWeb.ViweModel.Project;
 using System;
 using System.Collections.Generic;
@@ -22,21 +23,24 @@ namespace RenderDesignWeb.Controllers
         private IDesignerRepository _designerRepository;
         private IContactRequestsRepository  _contactRequestsRepository;
         public IContactMobileRepository _contactMobileRepository;
+        public IPostRepository _postRepository;
 
 
 
         public HomeController(IContactRequestsRepository contactRequestsRepository,
             IContactMobileRepository contactMobileRepository,
-            IProjectRepository projectRepository, IImageRepository imageRepository, IDesignerRepository designerRepository)
+            IProjectRepository projectRepository, IImageRepository imageRepository, IDesignerRepository designerRepository,
+            IPostRepository postRepository)
         {
             _projectRepository = projectRepository;
             _imageRepository = imageRepository;
             _designerRepository = designerRepository;
             _contactRequestsRepository = contactRequestsRepository;
             _contactMobileRepository = contactMobileRepository;
+            _postRepository = postRepository;
 
         }
-        public IActionResult Home()
+        public IActionResult Index()
         {
             return View();
         }
@@ -145,23 +149,27 @@ namespace RenderDesignWeb.Controllers
         {
             return View();
         }
-        
-        [HttpGet]
-        public IActionResult ContactUs()
+        public IActionResult Post()
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult ContactUs(ContactVm contact)
+        public IActionResult Post(PostViewModel post)
         {
-            _contactRequestsRepository.Add(new ContactRequests()
-            {
-                Email = contact.Email,
-                Name = contact.Name,
-                Subject = contact.Subject
-            }) ;
+          _postRepository.Add(new Post()
+            {               
+                Name = post.Name,
+                Subject = post.Subject
+            });
 
             return RedirectToAction(nameof(Index));
+         
+        }
+
+       
+        [HttpPost]
+        public IActionResult ContactUs()
+        {
+            return View();
         }
         public void EnterMobileNumberToContact(ContactMobile contactMobile)
         {
