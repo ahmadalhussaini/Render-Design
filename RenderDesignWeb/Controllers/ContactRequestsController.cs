@@ -46,6 +46,30 @@ namespace RenderDesignWeb.Controllers
             _contactRequestsRepository.Delete(contact);
             return View();
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: ProjectController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ContactRequestsViewModel contactrequests)
+        {
+
+            var _contactrequests = new ContactRequests()
+            {
+                Name = contactrequests.Name,
+                Email = contactrequests.Email,
+                Phone = contactrequests.Phone,
+                Subject = contactrequests.Subject
+
+            };
+            var contactrequestsid = _contactRequestsRepository.Add(_contactrequests);
+
+            return Redirect("/Home/ContactUs");
+
+        }
 
 
     }

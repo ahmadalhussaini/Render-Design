@@ -165,24 +165,11 @@ namespace RenderDesignWeb.Controllers
          
         }
 
-        [HttpGet]
+       
+        [HttpPost]
         public IActionResult ContactUs()
         {
             return View();
-        }
-        [HttpPost]
-        public IActionResult ContactUs(ContactRequestsListViewModel contact)
-        {/*
-            _contactRequestsRepository.Add(new ContactRequestsViewModel()
-            {
-                Email = contact.Email,
-                Name = contact.Name,
-                Subject = contact.Subject
-              
-        }) ;
-             */
-
-            return RedirectToAction(nameof(Index));
         }
         public void EnterMobileNumberToContact(ContactMobile contactMobile)
         {
