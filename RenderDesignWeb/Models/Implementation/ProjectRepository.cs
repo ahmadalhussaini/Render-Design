@@ -57,5 +57,10 @@ namespace RenderDesignWeb.Models.Implementation
             db.Projects.Update(entity);
             db.SaveChanges();
         }
+
+        List<Project> IProjectRepository.ProjectsByDesigner(string designer)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
