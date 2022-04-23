@@ -27,7 +27,7 @@ namespace RenderDesignWeb.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=RenderDesign_db;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=.;Database=RenderDesign_db;Trusted_Connection=True;");
         }
     }
 }

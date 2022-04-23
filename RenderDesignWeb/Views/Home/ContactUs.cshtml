@@ -21,7 +21,7 @@
             </div>
 
             <div class="row">
-                <form asp-controller="ContactRequests" asp-action="Create">
+                <form asp-controller="home" asp-action="ContactUs">
                     <div class="col md-7 shadow-sm rounded p-5">
 
                         <div class="row">
@@ -49,12 +49,12 @@
 
 
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="submit" class="btn btn-primary" @*data-bs-toggle="modal" data-bs-target="#exampleModal"*@>
                             send
                         </button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        @*<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -71,7 +71,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
 
                     </div>
                     </form>

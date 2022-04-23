@@ -166,10 +166,28 @@ namespace RenderDesignWeb.Controllers
         }
 
        
-        [HttpPost]
+        [HttpGet]
         public IActionResult ContactUs()
         {
             return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ContactUs(ContactRequestsViewModel contactrequests)
+        {
+
+            var _contactrequests = new ContactRequests()
+            {
+                Name = contactrequests.Name,
+                Email = contactrequests.Email,
+                Phone = contactrequests.Phone,
+                Subject = contactrequests.Subject
+
+            };
+            var contactrequestsid = _contactRequestsRepository.Add(_contactrequests);
+
+            return Redirect("/Home/ContactUs");
+
         }
         public void EnterMobileNumberToContact(ContactMobile contactMobile)
         {
