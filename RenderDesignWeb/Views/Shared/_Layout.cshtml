@@ -73,7 +73,7 @@ We work in Jordan, UAE and Saudi Arabia">
                         <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal1"> Sign up  <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal"> Log in  <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal2"> Log in  <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
 
@@ -82,7 +82,7 @@ We work in Jordan, UAE and Saudi Arabia">
     </header>
     <!-- Button trigger modal -->
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -91,23 +91,19 @@ We work in Jordan, UAE and Saudi Arabia">
                 </div>
                 <div class="modal-body">
 
-                    <form class="login-form">
+                    <form class="login-form" asp-controller="Auth" asp-action="Login">
 
                         <center><h1 class="main-heading">Login Form</h1></center>
 
-                        <input type="text" placeholder="user name" />
+                        <input type="text" name="Email" placeholder="user name" />
 
-                        <input type="password" placeholder="password" />
+                        <input type="password" name="Password" placeholder="password" />
 
                         <button>LOGIN</button>
 
                         <p class="message">Not Registered? <a href="reg.html">Register</a></p>
 
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
@@ -123,19 +119,19 @@ We work in Jordan, UAE and Saudi Arabia">
                 </div>
                 <div class="modal-body">
 
-                    <form class="register-form">
+                    <form class="register-form" asp-controller="Auth" asp-action="Register">
 
                         <center><h1 class="main-heading">Register Form</h1></center>
 
-                        <input type="text" placeholder="Name Designer/Company" />
+                        <input type="text" name="Name" placeholder="Name Designer/Company" />
 
-                        <input type="text" placeholder="email-id" />
+                        <input type="text" name="Email" placeholder="email-id" />
 
-                        <input type="password" placeholder="password" />
+                        <input type="password" name="Password" placeholder="password" />
 
                         <input type="password" placeholder="Confirm password" />
 
-                        <input type="date" placeholder="Creat At" />
+                        <input type="date" name="CreatedAt" placeholder="Creat At" />
 
                         <button>SUBMIT</button>
 
@@ -143,11 +139,7 @@ We work in Jordan, UAE and Saudi Arabia">
 
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
+             </div>
         </div>
     </div>
     <div>

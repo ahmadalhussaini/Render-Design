@@ -8,12 +8,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+
 
 namespace RenderDesignWeb.Controllers
 {
     public class ProjectController : Controller
     {
+        const string SessionId = "0";
         private readonly IProjectRepository _projectRepository;
         private IImageRepository _imageRepository;
         public ProjectController(IProjectRepository projectRepository, IImageRepository imageRepository)
@@ -26,7 +29,9 @@ namespace RenderDesignWeb.Controllers
 
         public ActionResult Index()
         {
-            var projects = _projectRepository.GetProjects();
+          var id  =  HttpContext.Session.GetInt32(SessionId);
+
+            var projects = _projectRepository.GetProjects((int)id);
             var List = new ProjectListViewModel();
             var _projects = new List<ProjectViewModel>();
             foreach (var elem in projects)
@@ -89,6 +94,7 @@ namespace RenderDesignWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ProjectViewModel project)
         {
+            var id = HttpContext.Session.GetInt32(SessionId);
             List<string> paths = new List<string>();
             foreach (var elem in project._images)
             {
@@ -101,6 +107,7 @@ namespace RenderDesignWeb.Controllers
                 Description = project.Description,
                 Location = project.Location,           
                 Type = project.Type,
+                DesignerId = id
            
 
             };

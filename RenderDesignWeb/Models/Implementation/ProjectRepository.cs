@@ -38,6 +38,11 @@ namespace RenderDesignWeb.Models.Implementation
         {
             var project = db.Projects.ToList();
             return project;
+        } 
+        public List<Project> GetProjects(int id)
+        {
+            var project = db.Projects.Where(x=>x.DesignerId == id).ToList();
+            return project;
         }
 
         public List<Project> GetProjects(string type)

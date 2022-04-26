@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RenderDesignWeb.Models;
 using RenderDesignWeb.Models.Interface;
@@ -17,6 +18,8 @@ namespace RenderDesignWeb.Controllers
     {
         private IAdminRepository _adminRepository;
         private IDesignerRepository _designerRepository;
+        const string SessionId = "0";
+
 
 
         public AuthController(IAdminRepository adminRepository, IDesignerRepository designerRepository) {
@@ -32,88 +35,72 @@ namespace RenderDesignWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViweModel model)
+        public async Task<IActionResult> Login(string Email, string Password)
         {
             if (ModelState.IsValid)
             {
 
-                var admin = _adminRepository.Login(model.Email, model.Password);
-                if (admin == null)
+                var admin = _adminRepository.Login(Email, Password);
+                var designer = _designerRepository.Login(Email, Password);
+
+                if (admin == null && designer == null)
                 {
                     TempData["Error"] = "Username or Password is incorrect";
-                    return View("Login");
                 }
-                var clamis = new List<Claim>();
-                clamis.Add(new Claim("userId", admin.Id.ToString()));
-                clamis.Add(new Claim("Email", admin.Email));
-                clamis.Add(new Claim(ClaimTypes.NameIdentifier, admin.Email));
-                var claimsIdentity = new ClaimsIdentity(clamis, CookieAuthenticationDefaults.AuthenticationScheme);
-                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-                var authProperties = new AuthenticationProperties
-                {
+                if (admin != null) {
+                    var clamis = new List<Claim>();
+                    clamis.Add(new Claim("userId", admin.Id.ToString()));
+                    clamis.Add(new Claim("Email", admin.Email));
+                    clamis.Add(new Claim(ClaimTypes.NameIdentifier, admin.Email));
+                    var claimsIdentity = new ClaimsIdentity(clamis, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                    var authProperties = new AuthenticationProperties
+                    {
 
-                    ExpiresUtc = DateTimeOffset.UtcNow.AddHours(1),
-                    IsPersistent = true,
+                        ExpiresUtc = DateTimeOffset.UtcNow.AddHours(1),
+                        IsPersistent = true,
 
-                };
+                    };
 
-                await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity),
-                    authProperties);
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(claimsIdentity),
+                        authProperties);
 
-                return Redirect("/Project/Index");
+                    return Redirect("/Admin/IndexProject");
+                }
+                if (designer != null) {
+                   
+                    HttpContext.Session.SetInt32(SessionId, designer.Id);
+
+                    var clamis = new List<Claim>();
+                    clamis.Add(new Claim("userId", designer.Id.ToString()));
+                    clamis.Add(new Claim("Email", designer.Email));
+                    clamis.Add(new Claim(ClaimTypes.NameIdentifier, designer.Email));
+                    var claimsIdentity = new ClaimsIdentity(clamis, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                    var authProperties = new AuthenticationProperties
+                    {
+
+                        ExpiresUtc = DateTimeOffset.UtcNow.AddHours(1),
+                        IsPersistent = true,
+
+                    };
+
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(claimsIdentity),
+                        authProperties);
+
+                    return Redirect("/Project/Index");
+                }
+                TempData["Error"] = "Username or Password is incorrect";
+                return RedirectToAction("Login");
             }
+              
             TempData["Error"] = "Username or Password is incorrect";
             return RedirectToAction("Login");
         }
-         [HttpGet]
-        public IActionResult DesignerLogin()
-
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DesignerLogin(LoginViweModel model)
-        {
-            if (ModelState.IsValid)
-            {
-
-                var designer = _designerRepository.Login(model.Email, model.Password);
-                if (designer == null)
-                {
-                    TempData["Error"] = "Username or Password is incorrect";
-                    return View("Login");
-                }
-                var clamis = new List<Claim>();
-                clamis.Add(new Claim("userId", designer.Id.ToString()));
-                clamis.Add(new Claim("Email", designer.Email));
-                clamis.Add(new Claim(ClaimTypes.NameIdentifier, designer.Email));
-                var claimsIdentity = new ClaimsIdentity(clamis, CookieAuthenticationDefaults.AuthenticationScheme);
-                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-                var authProperties = new AuthenticationProperties
-                {
-
-                    ExpiresUtc = DateTimeOffset.UtcNow.AddHours(1),
-                    IsPersistent = true,
-
-                };
-
-                await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity),
-                    authProperties);
-
-                return Redirect("/Project/Index");
-            }
-            TempData["Error"] = "Username or Password is incorrect";
-            return RedirectToAction("Login");
-        }
-
-
-
         public ActionResult Register()
         {
             return View();
@@ -122,19 +109,20 @@ namespace RenderDesignWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> RegisterAsync(DesignerViewModel designer)
+        public async Task<ActionResult> RegisterAsync(string Name , string Password, string Email,DateTime CreatedAt)
         {
 
             var _designer = new Designer()
             {
-                Name = designer.Name,
-                Password = designer.Password,
-                PhoneNumber = designer.PhoneNumber,
-                CreatedAt = designer.CreatedAt,
-                Email = designer.Email,
+                Name = Name,
+                Password = Password,
+                //PhoneNumber = PhoneNumber,
+                CreatedAt = CreatedAt,
+                Email = Email,
             };
 
            var AddedDesigner =  _designerRepository.Register(_designer);
+            HttpContext.Session.SetInt32(SessionId, AddedDesigner.Id);
 
             var clamis = new List<Claim>();
             clamis.Add(new Claim("userId", AddedDesigner.Id.ToString()));
@@ -163,6 +151,8 @@ namespace RenderDesignWeb.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
+            HttpContext.Session.SetInt32(SessionId, 0);
+
             return RedirectToAction("Login");
         }
 

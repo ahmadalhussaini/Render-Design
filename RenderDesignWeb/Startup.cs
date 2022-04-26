@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,7 +28,6 @@ namespace RenderDesignWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IImageRepository, ImageRepository>();
@@ -37,7 +37,15 @@ namespace RenderDesignWeb
             services.AddScoped<IDesignerRepository, DesignerRepository>();
             services.AddControllersWithViews();
             services.AddDbContext<RenderDesignContext>(options => options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=RenderDesign_db;Trusted_Connection=True;"));
-
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LoginPath = "/Auth/Login";
+            });
+            services.AddDistributedMemoryCache();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);//You can set Time   
+            });
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +63,8 @@ namespace RenderDesignWeb
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseRouting();
 
