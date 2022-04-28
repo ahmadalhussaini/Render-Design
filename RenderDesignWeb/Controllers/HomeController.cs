@@ -149,10 +149,13 @@ namespace RenderDesignWeb.Controllers
         {
             return View();
         }
+        [HttpGet]
         public IActionResult Post()
         {
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Post(PostViewModel post)
         {
           _postRepository.Add(new Post()

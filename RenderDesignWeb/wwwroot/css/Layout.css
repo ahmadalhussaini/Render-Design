@@ -8,12 +8,18 @@ body {
     color: white;
     background-color: black;
 }
+.register-form{
+    background-color:red
+}
+.login-form{
+    background-color:green
+}
 header {
     background-color: rgb(232, 224, 213);
-    position:fixed;
-    width:100%;
-    top:0;
-    z-index:4  
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 4
 }
 .collapse{
     margin-left:25% ;   

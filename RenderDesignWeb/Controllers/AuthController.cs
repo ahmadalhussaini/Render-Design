@@ -109,14 +109,14 @@ namespace RenderDesignWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> RegisterAsync(string Name , string Password, string Email,DateTime CreatedAt)
+        public async Task<ActionResult> RegisterAsync(string Name , string Password,string PhoneNumber, string Email,DateTime CreatedAt)
         {
 
             var _designer = new Designer()
             {
                 Name = Name,
                 Password = Password,
-                //PhoneNumber = PhoneNumber,
+               PhoneNumber = PhoneNumber,
                 CreatedAt = CreatedAt,
                 Email = Email,
             };
