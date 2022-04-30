@@ -9,11 +9,12 @@ body {
     background-color: black;
 }
 .register-form{
-    background-color:red
+    background-color:white
 }
-.login-form{
-    background-color:green
+.login-form {
+    background-color: white
 }
+
 header {
     background-color: rgb(232, 224, 213);
     position: fixed;

@@ -86,22 +86,51 @@ We work in Jordan, UAE and Saudi Arabia">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <img src="~/imges/logo.png" style="width: 110px; height:90px" alt="logo"  />
+                    <h5 class="modal-title" id="exampleModalLabel"> </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div >
+
+                        
+                    </div>
 
                     <form class="login-form" asp-controller="Auth" asp-action="Login">
 
-                        <center><h1 class="main-heading">Login Form</h1></center>
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form3Example3">Email Address</label>
+                            <input type="email" id="form3Example3" class="form-control form-control-lg"
+                                   placeholder="Enter a valid email address" />
+                        </div>
 
-                        <input type="text" name="Email" placeholder="user name" />
+                        <!-- Password input -->
+                        <div class="form-outline mb-3">
+                            <label class="form-label" for="form3Example4">Password</label>
+                            <input type="password" id="form3Example4" class="form-control form-control-lg"
+                                   placeholder="Enter password" />
+                        </div>
 
-                        <input type="password" name="Password" placeholder="password" />
+                        <div class="d-flex justify-content-between align-items-center">
+                            <!-- Checkbox -->
+                            <div class="form-check mb-0">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                                <label class="form-check-label" for="form2Example3">
+                                    Remember me
+                                </label>
+                            </div>
+                            <a href="#!" class="text-body">Forgot password?</a>
+                        </div>
 
-                        <button>LOGIN</button>
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <button type="button" class="btn btn-primary mb-2"
+                                    style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                                Login
+                            </button>
 
-                        <p class="message">Not Registered? <a href="reg.html">Register</a></p>
+                        </div>
+                        <p class="message">Don't Have an Account'? <a href="reg.html">Register Here</a></p>
 
                     </form>
                 </div>
@@ -114,30 +143,54 @@ We work in Jordan, UAE and Saudi Arabia">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <img src="~/imges/logo.png" style="width: 110px; height:90px" alt="logo" />
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
                     <form class="register-form" asp-controller="Auth" asp-action="Register">
 
-                        <center><h1 class="main-heading">Register Form</h1></center>
 
-                        <input type="text" name="Name" placeholder="Name Designer/Company" />
+                        <!-- 2 column grid layout with text inputs for the first and last names -->
+                        <div class="form-outline mb-4">
 
-                        <input type="text" name="Email" placeholder="email-id" />
+                            <div class="form-outline">
+                                <label class="form-label" for="form3Example1">Name</label>
+                                <input type="text" id="form3Example1" class="form-control" placeholder="Designer/Company Name" />
+                            </div>
+                        </div>
 
-                        <input type="password" name="Password" placeholder="password" />
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form3Example3">Email Address</label>
+                            <input type="email" id="form3Example3" class="form-control" placeholder="Valid Email" />
 
-                        <input type="password" placeholder="Confirm password" />
-                        <input type="text" name="PhoneNumber" placeholder="PhoneNumber" />
+                        </div>
 
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form3Example4">Password</label>
+                            <input type="password" id="form3Example4" class="form-control" placeholder="Enter Password" />
 
-                        <input type="date" name="CreatedAt" placeholder="Creat At" />
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form3Example5">Password Confirmation</label>
+                            <input type="password" id="form3Example5" class="form-control" placeholder="Confirm password" />
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form3Example6">Phone Number</label>
+                            <input type="text" name="PhoneNumber" id="form3Example6" class="form-control" placeholder="Add Phone Number" />
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form3Example7">Date of Creation</label>
+                            <input type="date" name="CreatedAt" id="form3Example7" class="form-control" placeholder="Create At" />
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block mb-4">
+                            Sign up
+                        </button>
 
-                        <button>SUBMIT</button>
-
-                        <p class="message">Already Registered? <a href="Log.html">Login</a></p>
+                        <p class="message">Already Have an Account? <a href="Log.html">Login</a></p>
 
                     </form>
                 </div>
