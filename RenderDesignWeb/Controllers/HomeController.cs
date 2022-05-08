@@ -149,19 +149,14 @@ namespace RenderDesignWeb.Controllers
         {
             return View();
         }
+       
         [HttpGet]
         public IActionResult Post()
-        {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Post(PostViewModel post)
         {
             var contactmobail = _postRepository.GetPosts();
             var List = new PostListViewModel();
             var _designer = new List<PostViewModel>();
-            foreach (var elem in Model.PostViewModel)
+            foreach (var elem in contactmobail)
             {
                 var model = new PostViewModel
                 {
@@ -176,11 +171,21 @@ namespace RenderDesignWeb.Controllers
             }
             List.PostViewModel = _designer;
         
+        
+
+            return View(List);
+         
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Addpost(string Name ,string Subject)
+        {
             _postRepository.Add(new Post()
-            {               
-                Name = post.Name,
-                Subject = post.Subject
+            {
+                Name = Name,
+                Subject = Subject
             });
+
 
             return RedirectToAction(nameof(Index));
          

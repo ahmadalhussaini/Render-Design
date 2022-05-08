@@ -1,4 +1,4 @@
-﻿@model RenderDesignWeb.ViweModel.Post.PostViewModel;
+﻿@model RenderDesignWeb.ViweModel.Post.PostListViewModel;
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Post";
@@ -84,18 +84,18 @@
         <div id="myModal" class="modal fade" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form asp-controller="home" asp-action="post">
+                    <form asp-controller="home" asp-action="Addpost">
                         <div class="modal-header">
                             <h5 class="modal-title">Add Post </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
                             <label for="message-text" class="col-form-label">Name:</label>
-                            <input class="form-control" asp-for="Name"  id="message-text">
+                            <input class="form-control" name="Name"  id="message-text">
                         </div>
                         <div class="modal-body">
                             <label for="message-text" class="col-form-label">Descripion:</label>
-                            <textarea class="form-control" asp-for="Subject"  id="message-text"></textarea>
+                            <textarea class="form-control" name="Subject"  id="message-text"></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -114,7 +114,7 @@
 
 
     <div class="container main-section border" style="">
-        @foreach (var elem in Model.Projects)
+        @foreach (var elem in Model.PostViewModel)
         {
             <div class="row">
                 <div class="col-lg-12 col-sm-12 col-12">
