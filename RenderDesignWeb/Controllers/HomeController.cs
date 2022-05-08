@@ -158,7 +158,25 @@ namespace RenderDesignWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Post(PostViewModel post)
         {
-          _postRepository.Add(new Post()
+            var contactmobail = _postRepository.GetPosts();
+            var List = new PostListViewModel();
+            var _designer = new List<PostViewModel>();
+            foreach (var elem in Model.PostViewModel)
+            {
+                var model = new PostViewModel
+                {
+                    Id = elem.Id,
+                    Name = elem.Name,
+                    Subject = elem.Subject
+
+                };
+
+                _designer.Add(model);
+
+            }
+            List.PostViewModel = _designer;
+        
+            _postRepository.Add(new Post()
             {               
                 Name = post.Name,
                 Subject = post.Subject

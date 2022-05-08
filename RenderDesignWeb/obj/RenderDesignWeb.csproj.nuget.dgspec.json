@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Farah\\Desktop\\Project\\Render-Design\\RenderDesignWeb\\RenderDesignWeb.csproj": {}
+    "C:\\Users\\H4C\\Desktop\\render-design\\Render-Design\\RenderDesignWeb\\RenderDesignWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Farah\\Desktop\\Project\\Render-Design\\RenderDesignWeb\\RenderDesignWeb.csproj": {
+    "C:\\Users\\H4C\\Desktop\\render-design\\Render-Design\\RenderDesignWeb\\RenderDesignWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Farah\\Desktop\\Project\\Render-Design\\RenderDesignWeb\\RenderDesignWeb.csproj",
+        "projectUniqueName": "C:\\Users\\H4C\\Desktop\\render-design\\Render-Design\\RenderDesignWeb\\RenderDesignWeb.csproj",
         "projectName": "RenderDesignWeb",
-        "projectPath": "C:\\Users\\Farah\\Desktop\\Project\\Render-Design\\RenderDesignWeb\\RenderDesignWeb.csproj",
-        "packagesPath": "C:\\Users\\Farah\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Farah\\Desktop\\Project\\Render-Design\\RenderDesignWeb\\obj\\",
+        "projectPath": "C:\\Users\\H4C\\Desktop\\render-design\\Render-Design\\RenderDesignWeb\\RenderDesignWeb.csproj",
+        "packagesPath": "C:\\Users\\H4C\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\H4C\\Desktop\\render-design\\Render-Design\\RenderDesignWeb\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Farah\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\H4C\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -91,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

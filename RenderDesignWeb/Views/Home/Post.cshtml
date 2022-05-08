@@ -114,101 +114,43 @@
 
 
     <div class="container main-section border" style="">
-        <div class="row">
-            <div class="col-lg-12 col-sm-12 col-12">
-                <div class="row" style=" margin-top: 3vw; margin-left: 3vw;  ">
+        @foreach (var elem in Model.Projects)
+        {
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-12">
+                    <div class="row" style=" margin-top: 3vw; margin-left: 3vw;  ">
 
-                    <div class="col-lg-10 col-sm-10 col-7">
-                        <h4 class="text-primary">Name </h4>
-                        <p>
-                            Descripioni k n3op3gia;segvopewmv pjm3f; fjq[2,f'  o[km rpk2' o jmio'ibguifb ] 'jm[qogjpm;gk[qp'g qop jvmgb 'nporf'' 1opjm, oifh3nw gpf,kweg   vboen ]mf,p[]';w ,gmnjlbgj['G,VMQGNBIHGJK['V JBRONOPKG['FRBGL']']']']]
-                        </p>
+                        <div class="col-lg-10 col-sm-10 col-7">
+                            <h4 class="text-primary">Name </h4>
+                            <p>
+                                Descripioni k n3op3gia;segvopewmv pjm3f; fjq[2,f'  o[km rpk2' o jmio'ibguifb ] 'jm[qogjpm;gk[qp'g qop jvmgb 'nporf'' 1opjm, oifh3nw gpf,kweg   vboen ]mf,p[]';w ,gmnjlbgj['G,VMQGNBIHGJK['V JBRONOPKG['FRBGL']']']']]
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="row post-detail" style=" margin-top: 3vw; margin-left: 3vw;">
-                    <div class="col-lg-12 col-sm-12 col-12">
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                                <span class="text-info">Dania</span>
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="fa fa-calendar" aria-hidden="true"></i> <span>22/4/2022</span>
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="fa fa-comment" aria-hidden="true"></i> <span class="text-info">0 Comments</span>
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="fa fa-share-square-o" aria-hidden="true"></i> <span class="text-info">0 Shares</span>
-                            </li>
-                        </ul>
+                    <div class="row post-detail" style=" margin-top: 3vw; margin-left: 3vw;">
+                        <div class="col-lg-12 col-sm-12 col-12">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <span class="text-info">Dania</span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i> <span>22/4/2022</span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <i class="fa fa-comment" aria-hidden="true"></i> <span class="text-info">0 Comments</span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <i class="fa fa-share-square-o" aria-hidden="true"></i> <span class="text-info">0 Shares</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-lg-12 col-sm-12 col-12">
-                <div class="row" style=" margin-top: 3vw; margin-left: 3vw; ">
-                    <div class="col-lg-10 col-sm-10 col-7">
-                        <h4 class="text-primary">Name </h4>
-                        <p>
-                            Descripion
-                        </p>
-                    </div>
-                </div>
-                <div class="row post-detail" style=" margin-top: 3vw; margin-left: 3vw;">
-                    <div class="col-lg-12 col-sm-12 col-12">
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                                <span class="text-info">Dania</span>
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="fa fa-calendar" aria-hidden="true"></i> <span>22/4/2022</span>
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="fa fa-comment" aria-hidden="true"></i> <span class="text-info">0 Comments</span>
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="fa fa-share-square-o" aria-hidden="true"></i> <span class="text-info">0 Shares</span>
-                            </li>
+        }
+            <hr>
 
-                        </ul>
-                    </div>
-                </div>
-            </div>
         </div>
-        <hr>
-        <div class="row">
-            <div class="col-lg-12 col-sm-12 col-12">
-                <div class="row" style=" margin-top: 3vw; margin-left: 3vw; ">
-                    <div class="col-lg-10 col-sm-10 col-7">
-                        <h4 class="text-primary">Name </h4>
-                        <p>
-                            Descripion
-                        </p>
-                    </div>
-                </div>
-                <div class="row post-detail" tyle=" margin-top: 3vw; margin-left: 3vw;">
-                    <div class="col-lg-12 col-sm-12 col-12">
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                                <span class="text-info">Dania</span>
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="fa fa-calendar" aria-hidden="true"></i> <span>22/4/2022</span>
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="fa fa-comment" aria-hidden="true"></i> <span class="text-info">0 Comments</span>
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="fa fa-share-square-o" aria-hidden="true"></i> <span class="text-info">0 Shares</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </body>
 </html>
