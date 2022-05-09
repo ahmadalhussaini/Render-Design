@@ -85,9 +85,7 @@
                                     <td>@elem.Id</td>
                                     <td>@elem.Name</td>
                                     <td>@elem.Subject</td>
-                                  
-
-
+                
                                     <td>
                                         <a onclick="if (confirm('Are you sure you want to delte this project?')) commentDelete(1); return false" asp-controller="Project" asp-action="Delete" asp-route-id="@elem.Id"><i class="fas fa-trash"></i></a>
                                     </td>

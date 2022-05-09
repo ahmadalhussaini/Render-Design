@@ -162,7 +162,8 @@ namespace RenderDesignWeb.Controllers
                 {
                     Id = elem.Id,
                     Name = elem.Name,
-                    Subject = elem.Subject
+                    Subject = elem.Subject,
+                    Date=elem.Date
 
                 };
 
@@ -183,7 +184,10 @@ namespace RenderDesignWeb.Controllers
             _postRepository.Add(new Post()
             {
                 Name = Name,
-                Subject = Subject
+                Subject = Subject,
+                Date = DateTime.Now
+                
+                
             });
 
 

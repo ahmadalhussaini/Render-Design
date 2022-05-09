@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RenderDesignWeb.Context;
 
 namespace RenderDesignWeb.Migrations
 {
     [DbContext(typeof(RenderDesignContext))]
-    partial class RenderDesignContextModelSnapshot : ModelSnapshot
+    [Migration("20220509113126_ahmad")]
+    partial class ahmad
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

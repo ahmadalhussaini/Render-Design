@@ -95,11 +95,11 @@ namespace RenderDesignWeb.Controllers
                     return Redirect("/Project/Index");
                 }
                 TempData["Error"] = "Username or Password is incorrect";
-                return RedirectToAction("Login");
+                return Redirect("/Home/Index");
             }
               
             TempData["Error"] = "Username or Password is incorrect";
-            return RedirectToAction("Login");
+            return Redirect("/Home/Index");
         }
         public ActionResult Register()
         {

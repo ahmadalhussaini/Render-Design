@@ -12,7 +12,8 @@ namespace RenderDesignWeb.ViweModel.Post
         public string Name { get; set; }
 
         public string Subject { get; set; }
+        public DateTime Date { get; set; }
 
-        
+
     }
 }
