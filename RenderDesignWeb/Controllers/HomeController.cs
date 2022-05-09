@@ -153,7 +153,7 @@ namespace RenderDesignWeb.Controllers
         [HttpGet]
         public IActionResult Post()
         {
-            var contactmobail = _postRepository.GetPosts();
+            var contactmobail = _postRepository.GetPosts().OrderByDescending(x => x.Id).ToList();
             var List = new PostListViewModel();
             var _designer = new List<PostViewModel>();
             foreach (var elem in contactmobail)

@@ -50,10 +50,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title"><b>Projects</b></h2>
+                        <h2 class="card-title"><b>Post</b></h2>
                     </div>
                     <div class="card-body">
-                        <a class="btn btn-primary m-1" asp-controller="Project" asp-action="Create">Add</a>
                         <div class="search1">
                             <label>search:</label>
                             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Projects.." title="Type in a name">
@@ -70,8 +69,6 @@
                                     <th>
                                         Creat At
                                     </th>
-
-
                                     <th>
                                         Action
                                     </th>
@@ -85,9 +82,10 @@
                                     <td>@elem.Id</td>
                                     <td>@elem.Name</td>
                                     <td>@elem.Subject</td>
+                                    <td>@elem.Date.ToLongDateString()</td>
                 
                                     <td>
-                                        <a onclick="if (confirm('Are you sure you want to delte this project?')) commentDelete(1); return false" asp-controller="Project" asp-action="Delete" asp-route-id="@elem.Id"><i class="fas fa-trash"></i></a>
+                                        <a onclick="if (confirm('Are you sure you want to delte this project?')) commentDelete(1); return false" asp-controller="Post" asp-action="Delete" asp-route-id="@elem.Id"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using RenderDesignWeb.Models;
 using RenderDesignWeb.Models.Interface;
 using RenderDesignWeb.ViweModel.Post;
@@ -27,7 +28,8 @@ namespace RenderDesignWeb.Controllers
                 {
                     Id = elem.Id,
                     Name=elem.Name,
-                    Subject=elem.Subject
+                    Subject=elem.Subject,
+                    Date=elem.Date
 
                 };
 
@@ -37,11 +39,22 @@ namespace RenderDesignWeb.Controllers
             List.PostViewModel = _designer;
             return View(List);
         }
-        public void DeletePost(Post post)
+        public ActionResult Delete(int id)
         {
+            var post = _postRepository.GetPost(id);
             _postRepository.Delete(post);
-
+            return RedirectToAction("Index");
         }
-        
+
+        // POST: ImageController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
+        {
+            var post = _postRepository.GetPost(id);
+            _postRepository.Delete(post);
+            return RedirectToAction("Index");
+        }
+
     }
 }

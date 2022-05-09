@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using RenderDesignWeb.Models;
 using RenderDesignWeb.Models.Interface;
 using RenderDesignWeb.ViweModel.Contact;
@@ -40,11 +41,21 @@ namespace RenderDesignWeb.Controllers
             return View(List);
         }
         [HttpGet]
-        public IActionResult DeleteContactRequest(ContactRequests contact)
+        public ActionResult Delete(int id)
         {
+            var contactRequest = _contactRequestsRepository.GetContactRequests(id);
+            _contactRequestsRepository.Delete(contactRequest);
+            return RedirectToAction("Index");
+        }
 
-            _contactRequestsRepository.Delete(contact);
-            return View();
+        // POST: ImageController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
+        {
+            var contactRequest = _contactRequestsRepository.GetContactRequests(id);
+            _contactRequestsRepository.Delete(contactRequest);
+            return RedirectToAction("Index");
         }
         public ActionResult Create()
         {

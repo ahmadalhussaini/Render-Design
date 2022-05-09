@@ -1,7 +1,9 @@
 ﻿
-@model RenderDesignWeb.ViweModel.Designer.DesignerListViewModel;
-@{ Layout = "_LayoutAdmin";
-    ViewData["Title"] = "Index"; }
+@model RenderDesignWeb.ViweModel.Image.ImageListViewModel;
+@{
+    Layout = "_LayoutDesigner";
+    ViewData["Title"] = "Index";
+}
 <head>
     <style>
         .search1 {
@@ -34,7 +36,6 @@
         }
     </style>
 </head>
-
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -50,12 +51,13 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title"><b>Designer</b></h2>
+                        <h2 class="card-title"><b>Images</b></h2>
                     </div>
                     <div class="card-body">
+                        <a class="btn btn-primary m-1" asp-controller="Image" asp-action="Create">Add</a>
                         <div class="search1">
                             <label>search:</label>
-                            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Projects.." title="Type in a name">
+                            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Images.." title="Type in a name">
 
                         </div>
                         <table id="myTable" class="table table-bordered table-hover">
@@ -63,44 +65,32 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>
-                                        Name
+                                        ProjectId
                                     </th>
                                     <th>
-                                        Email
+                                        PathImg
                                     </th>
-                                    <th>
-                                        PhoneNumber
-                                    </th>
-                                    <th>
-                                        project
-                                    </th>
-                                    <th>
-                                        CreatedAt
-                                    </th>
-
+                                   
                                     <th>
                                         Action
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var elem in Model.DesignerViewModel)
+                                @foreach (var elem in Model.images)
                                 {
+                                    <tr>
+                                        <td>@elem.Id</td>
+                                        <td>@elem.ProjectId</td>
+                                        <td><img src="~/@elem.PathImg" width="60px" height="60px" /></td>
+                                        
+                                        <td>
+                                            <a asp-controller="Image" asp-action="Details" asp-route-id="@elem.Id"><i class="fas fa-info-circle"></i></a>
+                                            <a onclick="if (confirm('Are you sure you want to delte this Image?')) commentDelete(1); return false" asp-controller="Image" asp-action="Delete" asp-route-id="@elem.Id"><i class="fas fa-trash"></i></a>
+                                            <a asp-controller="Image" asp-action="Edit" asp-route-id="@elem.Id"><i class="fas fa-edit"></i></a>
+                                        </td>
 
-                                <tr style="text-overflow:clip">
-                                    <td>@elem.Id</td>
-                                    <td>@elem.Name</td>
-                                    <td>@elem.Email</td>
-                                    <td>@elem.PhoneNumber</td>
-                                    <td>@elem.project</td>
-                                    <td>@elem.CreatedAt</td>
-
-                                    <td>
-                                       
-                                        <a onclick="if (confirm('Are you sure you want to delte this project?')) commentDelete(1); return false" asp-controller="Designer" asp-action="Delete" asp-route-id="@elem.Id"><i class="fas fa-trash"></i></a>
-                                       
-                                    </td>
-                                </tr>
+                                    </tr>
                                 }
                             </tbody>
                         </table>
@@ -111,7 +101,7 @@
     </div>
 </section>
 <script>
-function myFunction() {
+    function myFunction() {
         var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
@@ -128,8 +118,8 @@ function myFunction() {
                 }
             }
         }
-    }</script>
-
+    }
+</script>
 
 
 

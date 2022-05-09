@@ -99,9 +99,9 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary">Add Post </button>
+                           
                             <button type="submit" class="btn btn-primary">
-                                send
+                                Add Post
                             </button>
                         </div>
                     </form>
@@ -116,39 +116,35 @@
     <div class="container main-section border" style="">
         @foreach (var elem in Model.PostViewModel)
         {
-            <div class="row">
-                <div class="col-lg-12 col-sm-12 col-12">
-                    <div class="row" style=" margin-top: 3vw; margin-left: 3vw;  ">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-12">
+                <div class="row" style=" margin-top: 3vw; margin-left: 3vw;  ">
 
-                        <div class="col-lg-10 col-sm-10 col-7">
-                            <h4 class="text-primary">@elem.Name </h4>
-                            <p>
-                                @elem.Subject
-                            </p>
-                        </div>
+                    <div class="col-lg-10 col-sm-10 col-7">
+                        <h4 class="text-primary">@elem.Name </h4>
+                        <p style="font-size:28px">
+                            @elem.Subject
+                        </p>
                     </div>
-                    <div class="row post-detail" style=" margin-top: 3vw; margin-left: 3vw;">
-                        <div class="col-lg-12 col-sm-12 col-12">
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <span class="text-info">@elem.Name </span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> <span>22/4/2022</span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <i class="fa fa-comment" aria-hidden="true"></i> <span class="text-info">0 Comments</span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <i class="fa fa-share-square-o" aria-hidden="true"></i> <span class="text-info">0 Shares</span>
-                                </li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="row post-detail" style=" margin-top: 3vw; margin-left: 3vw;">
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <span class="text-info">@elem.Name </span>
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="fa fa-calendar" aria-hidden="true"></i> <span>@elem.Date.ToLongDateString()</span>
+                            </li>
+
+                        </ul>
                     </div>
                 </div>
             </div>
-        }
             <hr>
+        </div>
+        }
+          
 
         </div>
 
