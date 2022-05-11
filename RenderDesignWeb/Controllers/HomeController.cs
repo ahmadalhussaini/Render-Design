@@ -4,6 +4,7 @@ using RenderDesignWeb.Models;
 using RenderDesignWeb.Models.Interface;
 using RenderDesignWeb.ViweModel.Contact;
 using RenderDesignWeb.ViweModel.Designer;
+using RenderDesignWeb.ViweModel.Home;
 using RenderDesignWeb.ViweModel.Image;
 using RenderDesignWeb.ViweModel.Post;
 using RenderDesignWeb.ViweModel.Project;
@@ -43,6 +44,29 @@ namespace RenderDesignWeb.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+        public IActionResult Projects()
+        {
+            var projects = _projectRepository.GetProjects().OrderByDescending(x => x.Id).ToList();
+            var model = new List<HomeViewModel>();
+            var vm = new HomeListViewModel();
+            foreach (var elem in projects)
+            {
+                var imge = _imageRepository.GetImages(elem.Id).Take(1).ToList();
+
+                model.Add(new HomeViewModel()
+                {
+                    Id = elem.Id,
+                    Name = elem.Name,
+                    FirstImage = imge[0].PathImg,
+                    Type = elem.Type
+
+                });
+
+            }
+            vm.Projects = model;
+
+            return View(vm);
         }
         public ActionResult Create()
         {

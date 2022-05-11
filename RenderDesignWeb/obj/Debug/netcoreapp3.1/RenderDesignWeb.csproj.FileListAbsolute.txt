@@ -275,3 +275,7 @@ C:\Users\Farah\Desktop\Project\Render-Design\RenderDesignWeb\obj\Debug\netcoreap
 C:\Users\Farah\Desktop\Project\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\RenderDesignWeb.pdb
 C:\Users\Farah\Desktop\Project\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\RenderDesignWeb.genruntimeconfig.cache
 C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Image\Index.cshtml.g.cs
+C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Image\Create.cshtml.g.cs
+C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Image\Edit.cshtml.g.cs
+C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Admin\IndexImage.cshtml.g.cs
+C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Home\Projects.cshtml.g.cs

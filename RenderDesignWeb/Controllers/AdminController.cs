@@ -56,7 +56,26 @@ namespace RenderDesignWeb.Controllers
             List.ProjectsViewModel = _projects;
             return View(List);
         }
+        public ActionResult IndexImage()
+        {
+            var images = _imageRepository.GetImages();
+            var List = new ImageListViewModel();
+            var _images = new List<ImageViewModel>();
+            foreach (var elem in images)
+            {
+                var model = new ImageViewModel
+                {
+                    Id = elem.Id,
+                    ProjectId = elem.ProjectId,
+                    PathImg = elem.PathImg,
 
+                };
+                _images.Add(model);
+
+            }
+            List.images = _images;
+            return View(List);
+        }
         // GET: ProjectController/Details/5
         public ActionResult Details(int id)
         {
