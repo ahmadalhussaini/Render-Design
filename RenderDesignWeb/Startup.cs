@@ -5,12 +5,14 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using RenderDesignWeb.Context;
 using RenderDesignWeb.Models.Implementation;
 using RenderDesignWeb.Models.Interface;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -63,7 +65,12 @@ namespace RenderDesignWeb
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+               Path.Combine(Directory.GetCurrentDirectory(), "upload")),
+                RequestPath = "/upload"
+            }); app.UseCookiePolicy();
             app.UseSession();
 
             app.UseRouting();

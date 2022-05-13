@@ -52,13 +52,13 @@ namespace RenderDesignWeb.Controllers
             var vm = new HomeListViewModel();
             foreach (var elem in projects)
             {
-                var imge = _imageRepository.GetImages(elem.Id).Take(1).ToList();
+                var imge = _imageRepository.GetImages(elem.Id).FirstOrDefault();
 
                 model.Add(new HomeViewModel()
                 {
                     Id = elem.Id,
                     Name = elem.Name,
-                    FirstImage = imge[0].PathImg,
+                    FirstImage = imge != null? imge.PathImg : " ",
                     Type = elem.Type
 
                 });
@@ -215,7 +215,7 @@ namespace RenderDesignWeb.Controllers
             });
 
 
-            return RedirectToAction(nameof(Index));
+            return Redirect("/Home/Post");
          
         }
 

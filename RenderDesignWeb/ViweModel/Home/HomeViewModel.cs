@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RenderDesignWeb.ViweModel.Home
 {
-    public class HomeViewModel
+        public class HomeViewModel
     {
         public int Id { get; set; }
 
