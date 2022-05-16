@@ -3,6 +3,7 @@
 }
 .carousel-inner {
     height: 800px;
+    margin-top:-10px
 }
 
 .carousel-item img {
