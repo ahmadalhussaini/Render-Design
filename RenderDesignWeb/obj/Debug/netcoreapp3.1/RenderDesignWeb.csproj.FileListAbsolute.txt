@@ -279,3 +279,5 @@ C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netco
 C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Image\Edit.cshtml.g.cs
 C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Admin\IndexImage.cshtml.g.cs
 C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Home\Projects.cshtml.g.cs
+C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Login.cshtml.g.cs
+C:\Users\H4C\Desktop\render-design\Render-Design\RenderDesignWeb\obj\Debug\netcoreapp3.1\Razor\Views\Home\Project.cshtml.g.cs

@@ -17,7 +17,23 @@
             break;
         }
     </div>
-
+ 
+    <div class="choose-type mt-5 d-flex justify-content-around">
+        <div class="type-">
+            <input type="radio" name="type1" />
+            <label class="mr-4">Commercial</label>
+            
+            <input type="radio" name="type1" />
+            <label class="mr-4">Residential</label>
+            <input type="radio" name="type1" />
+            <label class="mr-4">Landscape</label>
+        </div>
+        <div class="serch">
+            <label>search by company :</label>
+           
+            <input type="search" />
+        </div>
+    </div>
     <div class="Projects row d-flex justify-content-around align-items-center">
         @foreach (var elem in Model.Projects)
         {
