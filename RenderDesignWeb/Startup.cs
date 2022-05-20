@@ -39,6 +39,7 @@ namespace RenderDesignWeb
             services.AddScoped<IDesignerRepository, DesignerRepository>();
             services.AddControllersWithViews();
             services.AddDbContext<RenderDesignContext>(options => options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=RenderDesign_db;Trusted_Connection=True;"));
+            //services.AddDbContext<RenderDesignContext>(options => options.UseSqlServer("Server=.;Database=RenderDesign_db2;Trusted_Connection=True;"));
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {
                 options.LoginPath = "/Auth/Login";

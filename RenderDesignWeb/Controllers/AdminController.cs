@@ -27,6 +27,7 @@ namespace RenderDesignWeb.Controllers
 
         public IProjectRepository _projectRepository;
         private IImageRepository _imageRepository;
+        const string Sessiontype = "type";
 
         public AdminController(IProjectRepository projectRepository, IImageRepository imageRepository) {
             _projectRepository = projectRepository;
@@ -34,31 +35,40 @@ namespace RenderDesignWeb.Controllers
         }
         public ActionResult IndexProject()
         {
-            var projects = _projectRepository.GetProjects();
-            var List = new ProjectListViewModel();
-            var _projects = new List<ProjectViewModel>();
-            foreach (var elem in projects)
+            var type = HttpContext.Session.GetString(Sessiontype);
+            if (type == "Admin")
             {
-                var model = new ProjectViewModel
+                var projects = _projectRepository.GetProjects();
+                var List = new ProjectListViewModel();
+                var _projects = new List<ProjectViewModel>();
+                foreach (var elem in projects)
                 {
-                    Id = elem.Id,
-                    Name = elem.Name,
-                    Description = elem.Description,
-                    Location = elem.Location,
-                    Type = elem.Type,
+                    var model = new ProjectViewModel
+                    {
+                        Id = elem.Id,
+                        Name = elem.Name,
+                        Description = elem.Description,
+                        Location = elem.Location,
+                        Type = elem.Type,
 
 
-                };
+                    };
 
-                _projects.Add(model);
+                    _projects.Add(model);
 
+                }
+                List.ProjectsViewModel = _projects;
+                return View(List);
             }
-            List.ProjectsViewModel = _projects;
-            return View(List);
+            return Redirect("/Home/NoAccess");
+
         }
         public ActionResult IndexImage()
         {
-            var images = _imageRepository.GetImages();
+            var type = HttpContext.Session.GetString(Sessiontype);
+            if (type == "Admin")
+            {
+                var images = _imageRepository.GetImages();
             var List = new ImageListViewModel();
             var _images = new List<ImageViewModel>();
             foreach (var elem in images)
@@ -75,11 +85,17 @@ namespace RenderDesignWeb.Controllers
             }
             List.images = _images;
             return View(List);
+            }
+            return Redirect("/Home/NoAccess");
+
         }
         // GET: ProjectController/Details/5
         public ActionResult Details(int id)
         {
-            var project = _projectRepository.GetProject(id);
+            var type = HttpContext.Session.GetString(Sessiontype);
+            if (type == "Admin")
+            {
+                var project = _projectRepository.GetProject(id);
             var imges = _imageRepository.GetImages(id);
             var List = new ImageListViewModel();
             var _images = new List<ImageViewModel>();
@@ -103,14 +119,20 @@ namespace RenderDesignWeb.Controllers
             };
 
             return View(model);
+            }
+            return Redirect("/Home/NoAccess");
+
         }
 
-   
+
 
         // GET: ProjectController/Delete/5
         public ActionResult Delete(int id)
         {
-            var project = _projectRepository.GetProject(id);
+            var type = HttpContext.Session.GetString(Sessiontype);
+            if (type == "Admin")
+            {
+                var project = _projectRepository.GetProject(id);
             var imges = _imageRepository.GetImages(id);
 
             foreach (var elem in imges)
@@ -122,6 +144,8 @@ namespace RenderDesignWeb.Controllers
             _projectRepository.Delete(project);
 
             return RedirectToAction("IndexProject");
+            }
+            return Redirect("/Home/NoAccess");
         }
 
         // POST: ProjectController/Delete/5
@@ -129,9 +153,14 @@ namespace RenderDesignWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
-            var pro = _projectRepository.GetProject(id);
+            var type = HttpContext.Session.GetString(Sessiontype);
+            if (type == "Admin")
+            {
+                var pro = _projectRepository.GetProject(id);
             _projectRepository.Delete(pro);
             return RedirectToAction("IndexProject");
+            }
+            return Redirect("/Home/NoAccess");
         }
         public string Upload(IFormFile image, string path)
         {

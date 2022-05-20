@@ -14,6 +14,10 @@ namespace RenderDesignWeb.ViweModel.Project
         public string Name { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }
+        public string DesignerName { get; set; }
+        public string DesignerPhoneNumber { get; set; }
+        public string DesignerEmail { get; set; }
+       
         public int? DesignerId { set; get; }
         public string Type { get; set; }
         public List<IFormFile> _images { get; set; }

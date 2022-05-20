@@ -51,9 +51,9 @@ namespace RenderDesignWeb.Models.Implementation
             return project;
         }
 
-        List<Project> ProjectsByDesigner(string designer)
+        List<Project> IProjectRepository.ProjectsByDesigner(string designer)
         {
-            var project = db.Projects.Where(x => x.Designer.Name == designer).ToList();
+            var project = db.Projects.Where(x => x.Designer.Name.Contains(designer)).ToList();
             return project;
         }
 
@@ -61,11 +61,6 @@ namespace RenderDesignWeb.Models.Implementation
         {
             db.Projects.Update(entity);
             db.SaveChanges();
-        }
-
-        List<Project> IProjectRepository.ProjectsByDesigner(string designer)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

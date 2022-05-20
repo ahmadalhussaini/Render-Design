@@ -45,9 +45,21 @@ namespace RenderDesignWeb.Controllers
         {
             return View();
         }
-        public IActionResult Projects()
+        public IActionResult Projects(string type, string name)
         {
-            var projects = _projectRepository.GetProjects().OrderByDescending(x => x.Id).ToList();
+            var projects = new List<Project>();
+            if (!String.IsNullOrEmpty(type))
+            {
+                projects = _projectRepository.GetProjects(type).OrderByDescending(x => x.Id).ToList();
+            }
+            if (!String.IsNullOrEmpty(name))
+            {
+                projects = _projectRepository.ProjectsByDesigner(name).OrderByDescending(x => x.Id).ToList();
+            }
+            else {
+                projects = _projectRepository.GetProjects().OrderByDescending(x => x.Id).ToList();
+
+            }
             var model = new List<HomeViewModel>();
             var vm = new HomeListViewModel();
             foreach (var elem in projects)
@@ -93,56 +105,12 @@ namespace RenderDesignWeb.Controllers
             return RedirectToAction(nameof(Index));
 
         }
-        public IActionResult ProjectsByType(string type)
-        {
-            var projects = _projectRepository.GetProjects(type).OrderByDescending(x => x.Id).ToList();
-            var model = new List<ProjectViewModel>();
-            var pro = new ProjectListViewModel();
-            foreach (var elem in projects)
-            {
-                var imge = _imageRepository.GetImages(elem.Id).Take(1).ToList();
-
-                model.Add(new ProjectViewModel()
-                {
-                    Id = elem.Id,
-                    Name = elem.Name,
-                    FirstImage = imge[0].PathImg,
-                    Type = elem.Type
-
-                });
-
-            }
-            pro.ProjectsViewModel = model;
-
-            return View(pro);
-        } 
-        public IActionResult ProjectsByDesigner(string name)
-        {
-            var projects = _projectRepository.ProjectsByDesigner(name).OrderByDescending(x => x.Id).ToList();
-            var model = new List<ProjectViewModel>();
-            var pro = new ProjectListViewModel();
-            foreach (var elem in projects)
-            {
-                var imge = _imageRepository.GetImages(elem.Id).Take(1).ToList();
-
-                model.Add(new ProjectViewModel()
-                {
-                    Id = elem.Id,
-                    Name = elem.Name,
-                    FirstImage = imge[0].PathImg,
-                    Type = elem.Type
-
-                });
-
-            }
-            pro.ProjectsViewModel = model;
-
-            return View(pro);
-        }
+       
         public IActionResult Project(int id)
         {
 
             var project = _projectRepository.GetProject(id);
+            var designer = _designerRepository.GetDesigner((int)project.DesignerId);
             var images = _imageRepository.GetImages(project.Id);
             var imagesvm = new List<ImageViewModel>();
             foreach (var elem in images)
@@ -155,7 +123,9 @@ namespace RenderDesignWeb.Controllers
             }
             var projectView = new ProjectViewModel()
             {
-
+                DesignerName = designer.Name,
+                DesignerEmail = designer.Email,
+                DesignerPhoneNumber = designer.PhoneNumber,
                 Name = project.Name,
                 
                 Description = project.Description,
@@ -170,6 +140,10 @@ namespace RenderDesignWeb.Controllers
             return View(projectView);
         }
         public IActionResult AboutUs()
+        {
+            return View();
+        }
+        public IActionResult NoAccess()
         {
             return View();
         }
@@ -243,10 +217,12 @@ namespace RenderDesignWeb.Controllers
             return Redirect("/Home/ContactUs");
 
         }
-        public void EnterMobileNumberToContact(ContactMobile contactMobile)
+        public ActionResult EnterMobileNumberToContact(string PhoneNumber)
         {
+            ContactMobile contactMobile = new ContactMobile();
+            contactMobile.PhoneNumber = PhoneNumber;
             _contactMobileRepository.Add(contactMobile);
-
+            return Redirect("/Home/ContactUs");
         }
 
     }

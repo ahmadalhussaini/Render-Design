@@ -17,21 +17,34 @@
             break;
         }
     </div>
- 
+
     <div class="choose-type mt-5 d-flex justify-content-around">
         <div class="type-">
-            <input type="radio" name="type1" />
-            <label class="mr-4">Commercial</label>
-            
-            <input type="radio" name="type1" />
-            <label class="mr-4">Residential</label>
-            <input type="radio" name="type1" />
-            <label class="mr-4">Landscape</label>
+            <form asp-controller="Home" asp-action="Projects">
+
+
+                <input type="radio" name="type" value="Commercial"/>
+                <label class="mr-4">Commercial</label>
+
+                <input type="radio" name="type" value="Residential" />
+                <label class="mr-4">Residential</label>
+                <input type="radio" name="type" value="Landscape" />
+                <label class="mr-4">Landscape</label>
+                <button type="submit">
+                    Submit
+                </button>
+            </form>
         </div>
         <div class="serch">
-            <label>search by company :</label>
-           
-            <input type="search" />
+            <form asp-controller="Home" asp-action="Projects">
+
+                <label>search by company :</label>
+
+                <input type="search" name="name" />
+                <button type="submit">
+                    Go
+                </button>
+            </form>
         </div>
     </div>
     <div class="Projects row d-flex justify-content-around align-items-center">

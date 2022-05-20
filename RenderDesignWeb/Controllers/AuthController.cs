@@ -19,6 +19,7 @@ namespace RenderDesignWeb.Controllers
         private IAdminRepository _adminRepository;
         private IDesignerRepository _designerRepository;
         const string SessionId = "0";
+        const string Sessiontype = "type";
 
 
 
@@ -48,6 +49,7 @@ namespace RenderDesignWeb.Controllers
                     TempData["Error"] = "Username or Password is incorrect";
                 }
                 if (admin != null) {
+                    HttpContext.Session.SetString(Sessiontype, "Admin");
                     var clamis = new List<Claim>();
                     clamis.Add(new Claim("userId", admin.Id.ToString()));
                     clamis.Add(new Claim("Email", admin.Email));
