@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using RenderDesignWeb.Models;
 using RenderDesignWeb.Models.Interface;
@@ -47,6 +48,9 @@ namespace RenderDesignWeb.Controllers
         }
         public IActionResult Projects(string type, string name)
         {
+           var designers = _designerRepository.GetDesigner().Select(o => new SelectListItem { Value = o.Name, Text = o.Name}).ToList();
+            designers.Insert(0, (new SelectListItem { Text = "All designers", Value = "0" }));
+            ViewBag.designers = new SelectList(designers);
             var projects = new List<Project>();
             if (!String.IsNullOrEmpty(type))
             {
