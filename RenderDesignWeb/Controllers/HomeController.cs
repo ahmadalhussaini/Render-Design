@@ -56,7 +56,7 @@ namespace RenderDesignWeb.Controllers
             {
                 projects = _projectRepository.ProjectsByDesigner(name).OrderByDescending(x => x.Id).ToList();
             }
-            else {
+            if(String.IsNullOrEmpty(type) && String.IsNullOrEmpty(name)) {
                 projects = _projectRepository.GetProjects().OrderByDescending(x => x.Id).ToList();
 
             }

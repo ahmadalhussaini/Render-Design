@@ -27,46 +27,104 @@ namespace RenderDesignWeb.Controllers
 
         public IProjectRepository _projectRepository;
         private IImageRepository _imageRepository;
+        private IAdminRepository _adminRepository;
+        const string SessionId = "0";
         const string Sessiontype = "type";
 
-        public AdminController(IProjectRepository projectRepository, IImageRepository imageRepository) {
+        public AdminController(IProjectRepository projectRepository,
+             IAdminRepository adminRepository,
+            IImageRepository imageRepository) {
             _projectRepository = projectRepository;
             _imageRepository = imageRepository;
+            _adminRepository = adminRepository;
+        }
+        [HttpGet]
+        public IActionResult Login()
+
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(string Email, string Password)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var admin = _adminRepository.Login(Email, Password);
+
+                if (admin == null)
+                {
+                    TempData["Error"] = "Username or Password is incorrect";
+                }
+                else
+                {
+                    HttpContext.Session.SetString(Sessiontype, "Admin");
+                    var clamis = new List<Claim>();
+                    clamis.Add(new Claim("userId", admin.Id.ToString()));
+                    clamis.Add(new Claim("Email", admin.Email));
+                    clamis.Add(new Claim(ClaimTypes.NameIdentifier, admin.Email));
+                    var claimsIdentity = new ClaimsIdentity(clamis, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                    var authProperties = new AuthenticationProperties
+                    {
+
+                        ExpiresUtc = DateTimeOffset.UtcNow.AddHours(1),
+                        IsPersistent = true,
+
+                    };
+
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(claimsIdentity),
+                        authProperties);
+
+                    return Redirect("/Admin/IndexProject");
+                }
+
+                TempData["Error"] = "Username or Password is incorrect";
+                return Redirect("/Admin/Login");
+            }
+            return Redirect("/Admin/Login");
         }
         public ActionResult IndexProject()
         {
             var type = HttpContext.Session.GetString(Sessiontype);
-            if (type == "Admin")
-            {
-                var projects = _projectRepository.GetProjects();
-                var List = new ProjectListViewModel();
-                var _projects = new List<ProjectViewModel>();
-                foreach (var elem in projects)
+
+
+                if (type == "Admin")
                 {
-                    var model = new ProjectViewModel
+                    var projects = _projectRepository.GetProjects();
+                    var List = new ProjectListViewModel();
+                    var _projects = new List<ProjectViewModel>();
+                    foreach (var elem in projects)
                     {
-                        Id = elem.Id,
-                        Name = elem.Name,
-                        Description = elem.Description,
-                        Location = elem.Location,
-                        Type = elem.Type,
+                        var model = new ProjectViewModel
+                        {
+                            Id = elem.Id,
+                            Name = elem.Name,
+                            Description = elem.Description,
+                            Location = elem.Location,
+                            Type = elem.Type,
 
 
-                    };
+                        };
 
-                    _projects.Add(model);
+                        _projects.Add(model);
 
+                    }
+                    List.ProjectsViewModel = _projects;
+                    return View(List);
                 }
-                List.ProjectsViewModel = _projects;
-                return View(List);
-            }
-            return Redirect("/Home/NoAccess");
+            return Redirect("/Admin/Login");
 
         }
         public ActionResult IndexImage()
         {
             var type = HttpContext.Session.GetString(Sessiontype);
-            if (type == "Admin")
+
+                if (type == "Admin")
             {
                 var images = _imageRepository.GetImages();
             var List = new ImageListViewModel();
@@ -86,7 +144,7 @@ namespace RenderDesignWeb.Controllers
             List.images = _images;
             return View(List);
             }
-            return Redirect("/Home/NoAccess");
+            return Redirect("/Admin/Login");
 
         }
         // GET: ProjectController/Details/5
@@ -120,7 +178,7 @@ namespace RenderDesignWeb.Controllers
 
             return View(model);
             }
-            return Redirect("/Home/NoAccess");
+            return Redirect("/Admin/Login");
 
         }
 
@@ -145,7 +203,7 @@ namespace RenderDesignWeb.Controllers
 
             return RedirectToAction("IndexProject");
             }
-            return Redirect("/Home/NoAccess");
+            return Redirect("/Admin/Login");
         }
 
         // POST: ProjectController/Delete/5
@@ -160,7 +218,7 @@ namespace RenderDesignWeb.Controllers
             _projectRepository.Delete(pro);
             return RedirectToAction("IndexProject");
             }
-            return Redirect("/Home/NoAccess");
+            return Redirect("/Admin/Login");
         }
         public string Upload(IFormFile image, string path)
         {
