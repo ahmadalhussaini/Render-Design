@@ -6,7 +6,20 @@
 }
 <link href="~/css/Projects.css" rel="stylesheet" />
 <head>
-
+    <style>
+        .Checkboxtype input{
+            height:17px;
+            width:17px;
+        }
+        .Checkboxtype label{
+            font-size:20px;
+            font-weight:500;
+        }
+        .serch label {
+            font-size: 20px;
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -20,7 +33,10 @@
 
     <div class="choose-type mt-5 d-flex justify-content-around">
         <div class="type-">
-            <div id="CheckboxContainerId">
+            <div class="Checkboxtype" id="CheckboxContainerId">
+                <input type="radio" name="type" value="allproject" />
+                <label class="mr-4">All Project</label>
+
                 <input type="radio" name="type" value="Commercial" />
                 <label class="mr-4">Commercial</label>
 
@@ -72,6 +88,9 @@
             location.href = "/Home/Projects?type=Residential";
         } else if ($(this).val() === 'Landscape') {
             location.href = "/Home/Projects?type=Landscape";
+        }
+        else if ($(this).val() === 'allproject') {
+            location.href = "/Home/Projects";
         }
     });
     function update() {

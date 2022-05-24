@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using RenderDesignWeb.Models;
 using RenderDesignWeb.Models.Interface;
 using RenderDesignWeb.ViweModel.ContactMobile;
@@ -35,11 +36,22 @@ namespace RenderDesignWeb.Controllers
             List.ContactMobileViewModel = _designer;
             return View(List);
         }
-        public void DeleteMobileNumberToContact(ContactMobile contactMobile)
+        public ActionResult Delete(int id)
         {
-            _contactMobileRepository.Delete(contactMobile);
-
+            var contactMobail = _contactMobileRepository.GetContactMobail(id);
+            _contactMobileRepository.Delete(contactMobail);
+            return RedirectToAction("Index");
         }
-       
+
+        // POST: ImageController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
+        {
+            var contactRequest = _contactMobileRepository.GetContactMobail(id);
+            _contactMobileRepository.Delete(contactRequest);
+            return RedirectToAction("Index");
+        }
+
     }
 }

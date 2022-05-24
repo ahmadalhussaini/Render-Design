@@ -6,7 +6,26 @@
 }
 <link href="~/css/Project.css" rel="stylesheet" />
 <head>
-
+    <style>
+        .des{
+            font-size:25px;
+            font-weight:bold;
+            margin-top:20px
+        }
+        .location .details {
+            font-weight: 500;
+            font-size: 22px;
+            color: #83b582
+        }
+            .location .details label {
+                color: black
+            }
+        .carousel-control-prev, .carousel-control-next {
+            height: 30px;
+            width: 30px;
+            padding: 5px
+        }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -41,8 +60,8 @@
 
     </div>
     <div class="shad">
-        <div class="desciption">
-            <div class="desciption-en">
+        <div class="des">
+            <div class="text-center">
                 <p> @Model.Description</p>
 
 
@@ -52,31 +71,35 @@
         <div class="location">
             <div class="place-en">
                 <p>
+                    <label>The location of project is:</label>
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                     @Model.Location
                 </p>
             </div>
            
-        </div><div class="location">
-            <div class="place-en">
+        </div>
+        <div class="location">
+            <div class="details">
                 <p>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <label>Name of Company design this project :</label>
                     @Model.DesignerName
                 </p>
             </div>
            
-        </div><div class="location">
-            <div class="place-en">
+        </div>
+        <div class="location">
+            <div class="details">
                 <p>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <label>The Number of company :</label>
                     @Model.DesignerPhoneNumber
                 </p>
             </div>
            
-        </div><div class="location">
-            <div class="place-en">
+        </div><div class="location" >
+            <div class="details">
                 <p>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <label>The Email of the company  :</label>
+
                     @Model.DesignerEmail
                 </p>
             </div>
