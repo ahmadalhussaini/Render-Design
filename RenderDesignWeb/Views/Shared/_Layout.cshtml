@@ -126,34 +126,35 @@ We work in Jordan, UAE and Saudi Arabia">
 
                             <div class="form-outline">
                                 <label class="form-label" for="form3Example1">Name</label>
-                                <input type="text" id="form3Example1" name="Name" class="form-control" placeholder="Designer/Company Name" />
+                                <input type="text" id="form3Example1" required name="Name" class="form-control" placeholder="Designer/Company Name" />
                             </div>
                         </div>
 
                         <!-- Email input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form3Example3">Email Address</label>
-                            <input type="email" id="form3Example3" name="Email"  class="form-control" placeholder="Valid Email" />
+                            <input type="email" id="form3Example3" name="Email" required  class="form-control" placeholder="Valid Email" />
 
                         </div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form3Example4">Password</label>
-                            <input type="password" id="form3Example4" class="form-control" name="Password" placeholder="Enter Password" />
+                            <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  required id="form3Example4" class="form-control" name="Password" placeholder="Enter Password" />
 
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form3Example5">Password Confirmation</label>
-                            <input type="password" id="form3Example5" class="form-control" placeholder="Confirm password" />
+                            <input type="password"   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required id="form3Example5" class="form-control" placeholder="Confirm password" />
                         </div>
+                      
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form3Example6">Phone Number</label>
-                            <input type="text" name="PhoneNumber" id="form3Example6" class="form-control" placeholder="Add Phone Number" />
+                            <input type="text" name="PhoneNumber" id="form3Example6" required class="form-control" placeholder="Add Phone Number" />
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form3Example7">Date of Creation</label>
-                            <input type="date" name="CreatedAt" id="form3Example7" class="form-control" placeholder="Create At" />
+                            <input type="date" name="CreatedAt" id="form3Example7" required class="form-control" placeholder="Create At" />
                         </div>
                         <button type="submit" class="btn btn-primary btn-block mb-4">
                             Sign up
@@ -227,6 +228,7 @@ We work in Jordan, UAE and Saudi Arabia">
                 "autoWidth": false,
             });
         });
+    
     </script>
 </body>
 </html>
